@@ -37,6 +37,7 @@ public class VariableEX1
 		char ch7 ='\n';
 		System.out.println(ch7);
 		
+		
 	}
 
 }

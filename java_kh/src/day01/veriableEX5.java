@@ -27,9 +27,7 @@ public class veriableEX5
 		//빈 문자열 + 'A'는 "A"가 되어서 저장이 가능
 		String str6 = "" + 'A';
 		System.out.println(str6);
-		
-		
-		
+		 
 	}
 
 }
