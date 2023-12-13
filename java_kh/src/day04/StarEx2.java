@@ -32,12 +32,10 @@ public class StarEx2 {
 			}
 			System.out.println("");
 		}
-		
-		
-		
-		
-
-
 	}
-
 }
+
+
+
+
+
