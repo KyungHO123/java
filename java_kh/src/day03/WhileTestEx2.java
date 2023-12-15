@@ -15,15 +15,34 @@ public class WhileTestEx2 {
 		 * 규칙성 :
 		 * 반복문 종료후 : 없음
 		 */
-		int i = 5
-				;
+		
+		int i =5;
+		while(i>=1) {
+			System.out.println(i);
+			--i;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*int i = 5;
 		
 		while(i >= 1) {
 			System.out.println(i);
 			--i;
 			
 			
-		}
+		}*/
 		
 		
 		

@@ -10,16 +10,14 @@ public class MultipleTableEx1 {
 		
 		//2단 출력하는 코드를 작성하라.
 		//int num= 2;
-		for(int num = 2 ;num <=9 ;num++ ) {
+		for(int num = 1 ;num <=9 ;num++ ) {
 			System.out.println(num + "단");
 		
 		for(int i= 1 ;i <=9 ;i++ ) {
 			System.out.println(num + "X" + i + "=" +(num*i));
 	} 
 		
-			
-		
-		
+
 		
 		
 		

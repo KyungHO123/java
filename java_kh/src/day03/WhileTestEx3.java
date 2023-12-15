@@ -21,6 +21,24 @@ public class WhileTestEx3 {
 		 * 반복회수 :
 		 * 규칙성 :
 		 */
+		
+		int i = 1;
+		int c = 5;
+		while(i <= 5) {
+			System.out.println(i*2);
+			i++;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*int i = 1;
 		int c = 5;
 		while(i <= c) {
@@ -30,7 +48,7 @@ public class WhileTestEx3 {
 		
 		
 		//강사님 코드
-	int i;
+	/*int i;
 	int n = 15;
 	//방법1
 	i= 2;
@@ -49,7 +67,7 @@ public class WhileTestEx3 {
 	while(1 <=n/2) {
 		System.out.println(i*2);
 	 ++i;
-	}
+	}*/
 		
 		
 		

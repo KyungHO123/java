@@ -26,18 +26,18 @@ public class HomeWorkEx1 {
 			}
 		else if(90<=num && num<=100) {
 			System.out.println(num + "점은 A입니다.");
-		}else if(80<=num && num<=90) {
+		}else if(80<=num && num<90) {
 			System.out.println(num + "점은 B입니다.");
-		}else if(70<=num && num<=80) {
+		}else if(70<=num && num<80) {
 			System.out.println(num + "점은 C입니다.");
-		}else if(60<=num && num<=70) {
+		}else if(60<=num && num<70) {
 			System.out.println(num + "점은 D입니다.");
 		}else  {
 			System.out.println(num + "점은 F입니다.");
 		}
 		
-		sc.close();
 		
-	}
+		
+	} 
 
 }
