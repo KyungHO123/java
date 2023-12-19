@@ -73,7 +73,7 @@ public class LottoEx2 {
 			for(i = 0; i<user.length; i++) {
 				if(bonus == user[i]) {
 					break;
-				}
+				} 
 			}
 			//보너스번호와 일치하는 번호가 없으면
 			if(i == user.length) {
