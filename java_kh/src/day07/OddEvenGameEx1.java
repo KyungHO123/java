@@ -70,7 +70,7 @@ public class OddEvenGameEx1 {
 			}
 		}while(menu != 3);	
 		scanner.close();
-	}
+	} 
 	
 	/* 기능 :메뉴를 출력하는 메서드
 	 * 매개변수 :없음
@@ -115,7 +115,7 @@ public class OddEvenGameEx1 {
 	public static int random(int min,int max) {
 		if(max < min) {
 			int tmp=max;
-			max = min;
+			max = min; 
 			min = tmp;
 		}
 		return (int)(Math.random()*(max-min+1)+min);
