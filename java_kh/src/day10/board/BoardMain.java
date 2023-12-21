@@ -1,7 +1,7 @@
-package day09.board;
+package day10.board;
 
 import java.util.Scanner;
-// -_-;;;
+
 public class BoardMain {
 	private static Scanner scan = new Scanner(System.in);
 	private static Board [] boardList = new Board[5];//게시글 목록
@@ -18,7 +18,7 @@ public class BoardMain {
 	 *   1. 게시글 목록 조회
 	 *   2. 게시글 등록
 	 *   3. 프로그램 종료
-	 *   메뉴 선택 : 1 
+	 *   메뉴 선택 : 1
 	 * 게시글 목록
 	 *   2. 가입인사 2023-12-20 asd 1
 	 *   1. 공지 2023-12-19 admin 3

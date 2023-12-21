@@ -1,8 +1,12 @@
-package day09.board;
+package day10.board;
 
 import java.util.Scanner;
-// -_-;;;
-public class BoardMain {
+
+import javax.swing.SwingConstants;
+
+import day08.Student;
+
+public class BoardMain2 {
 	private static Scanner scan = new Scanner(System.in);
 	private static Board [] boardList = new Board[5];//게시글 목록
 	private static int boardNum = 1;//추가될 게시글 번호
@@ -18,7 +22,7 @@ public class BoardMain {
 	 *   1. 게시글 목록 조회
 	 *   2. 게시글 등록
 	 *   3. 프로그램 종료
-	 *   메뉴 선택 : 1 
+	 *   메뉴 선택 : 1
 	 * 게시글 목록
 	 *   2. 가입인사 2023-12-20 asd 1
 	 *   1. 공지 2023-12-19 admin 3
@@ -172,7 +176,7 @@ public class BoardMain {
 			if(num == boardList[i].getNum()) {
 				index = i;
 				break;
-			}
+			} 
 		}
 		if(index == -1) {
 			System.out.println("일치하는 게시글이 없습니다.");
@@ -285,5 +289,5 @@ public class BoardMain {
 		System.out.println("3. 프로그램 종료");
 		System.out.println("-------------------");
 		System.out.print("메뉴 선택 : ");
-	}
+		}
 }

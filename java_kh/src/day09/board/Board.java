@@ -2,9 +2,7 @@ package day09.board;
 /* 게시글 관리를 위한 Board 클래스를 정의하세요.
  * -멤버변수와 메서드를 추가
  * */
-/* 게시글 관리를 위한 Board 클래스를 정의하세요.
- * - 필요한 멤버변수와 메서드를 추가
- * */
+
 public class Board {
 	//정보 : 게시일(일자), 제목, 내용, 작성자, 조회수, 번호 
 	private int num, views;
