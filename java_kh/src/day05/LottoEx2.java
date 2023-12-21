@@ -71,7 +71,7 @@ public class LottoEx2 {
 			int i;
 			//사용자가 입력한 번호에 보너스와 일치하는 번호가 있는지 확인
 			for(i = 0; i<user.length; i++) {
-				if(bonus == user[i]) {
+				if(bonus == user[i]) { 
 					break;
 				} 
 			}
