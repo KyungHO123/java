@@ -57,8 +57,8 @@ public class GenericEx1 {
 		 }
 		 return array[index];
 	 }
+
  }
- 
  //제네릭은 여러개 선언 가능하고 대문자로만 가능
 class TestB<T, C> {
 	private T num1;
