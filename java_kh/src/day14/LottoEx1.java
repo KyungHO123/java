@@ -43,7 +43,7 @@ public class LottoEx1 {
 		}
 		System.out.println(lotto + ", 보너스 : " + bonus);
 		//사용자가 당첨 번호를 입력
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("번호(중복되지 않은 6개) : ");
 		while(user.size()<6) {
 			int tmp = sc.nextInt();
@@ -75,10 +75,6 @@ public class LottoEx1 {
 			System.out.println("꽝 입니다.");
 			
 		}
-		
-		
-		
-		
 	}
 }
 
