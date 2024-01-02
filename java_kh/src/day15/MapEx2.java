@@ -54,13 +54,7 @@ public class MapEx2 {
 		switch(menu) {
 		case 1:
 			insertMember();
-			/*System.out.print("아이디 입력 : ");
-			sc.nextLine();
-			id=sc.nextLine();
-			System.out.print("비밀번호 입력: ");
-			pw=sc.nextLine();
-			map.put(id, pw);
-			System.out.println(map);*/
+	
 			break;
 		case 2:
 			searchMember();
