@@ -6,11 +6,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Homework{
-
+	static String mean;
 	private static Scanner scan = new Scanner(System.in);
 	private static HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
 	public static void main(String[] args) {
-
+		
 		int menu = 0;
 		//반복
 		do {
@@ -19,7 +19,7 @@ public class Homework{
 			try {
 				//메뉴 선택
 				menu = scan.nextInt();
-				//메뉼 실행
+				//메뉴 실행
 				runMenu(menu);
 			}catch(InputMismatchException e) {
 				System.out.println("잘못된 메뉴입니다.");
@@ -63,10 +63,23 @@ public class Homework{
 			 * 4. apple키를 삭제
 			 */
 			//새로운 단어 입력
+			System.out.println("수정할 단어 : ");
+			scan.nextLine();
+			word = scan.next();
+			map.containsKey(word);
+			
+			System.out.println("단어 수정 : ");
+			String changeWord = scan.next();
+			map.put(changeWord, map.remove(word));
+			System.out.println("수정 완료");
 			
 		case 3:
 			//단어 삭제
-
+			System.out.println("삭제할 단어 : ");
+			scan.nextLine();
+			word = scan.next();
+			map.remove(word);
+			System.out.println(word + " 삭제 완료");
 			break;
 		case 4:
 			//뜻 추가
@@ -74,14 +87,13 @@ public class Homework{
 			word = scan.next();
 			if(map.containsKey(word)) {
 				System.out.print("추가할 뜻 : ");
-				String mean = scan.next();
+				 mean = scan.next();
 				map.get(word).add(mean);
 			}else {
 				System.out.println("없는 단어");
 			}
 			break;
-		case 5:
-			//뜻 수정
+		case 5:	
 			break;
 		case 6:
 			//뜻 삭제
@@ -96,7 +108,7 @@ public class Homework{
 			break;
 		default:
 			throw new InputMismatchException();
-		}
+		} 
 	}
 
 }
