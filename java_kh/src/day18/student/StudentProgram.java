@@ -22,7 +22,7 @@ public class StudentProgram implements Program {
 	
 	@Override
 	public void run() {
-		String ip = "192.168.30.199";
+		String ip = "192.168.30.213";
 		int port = 5001;
 		//서버와 연결
 		connectServer(ip, port);
