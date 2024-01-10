@@ -18,7 +18,6 @@ public class ForUpDownEx1 {
 		 */
 		int min = 1 , max = 100;
 		int r = (int)(Math.random()*(max-min+1) + min);
-		//System.out.println("랜덤 : " + r );
 		
 		Scanner scanner = new Scanner(System.in);
 		int num = min - 1;
@@ -29,9 +28,9 @@ public class ForUpDownEx1 {
 				System.out.println("Down!");
 			}else if(num<r) {
 			System.out.println("Up!");
-		}else {
+			}else {
 			System.out.println("GREAT");
-		}
+			}
 			
 		}
 	}

@@ -20,7 +20,7 @@ public class NestedIfEx1 {
 			System.out.println("2, 6의 배수가 아님");
 		}
 		
-		//중첩 if를 사용 안하
+		//중첩 if를 사용 안함
 		if(num % 2 == 0 && num % 3 == 0) {
 			System.out.println(num + "은 6의 배수");
 		}else if (num % 2 == 0) {

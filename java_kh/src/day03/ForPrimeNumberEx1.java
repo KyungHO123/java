@@ -16,11 +16,12 @@ public class ForPrimeNumberEx1 {
 		 * 반복문종료후 :
 		 */
 		
-		int num = 6;
+		int num = 7;
 		int i,count;
 		for(i=1,count=0;i<=num ;i++) {
-		}if(num%i==0) {
+		if(num%i==0) {
 			++count;
+		}
 		}
 		if(count==2) {
 			System.out.println("ㅇㅇ");

@@ -49,7 +49,6 @@ public class ClientEx1 {
 			System.out.println("연결할 수 없습니다");
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

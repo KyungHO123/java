@@ -21,13 +21,5 @@ public class LcmEx1 {
 				break;
 			}
 		}
-/*for(int i= num1;i <= num1*num2; i+=num1) {
-			
-			if(i%num1==0) {
-		
-				System.out.println(num1 +"과 " + num2 + "의 최소 공배수 : " + i);
-				break;*/
-		
 	}
-
 }
