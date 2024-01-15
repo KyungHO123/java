@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [class^=box]{width: 300px; height: 300px;padding: 50px;}
+        .box1{
+            border: 20px solid transparent;
+            background-color: yellow;
+            background-clip: border-box;
+        }
+        .box2{
+            border: 1px solid black;
+            width: 1000px; height:1000px;
+            background-image: url(https://img.hankyung.com/photo/202308/PYH2023082410230006100_P4.jpg);
+            background-repeat: no-repeat;
+            background-size: contain ;
+            background-position:0 0;
+            background-origin: content-box;
+            background-attachment: fixed;
+            background-image: url(https://img.hankyung.com/photo/202308/PYH2023082410230006100_P4.jpg);
+                /* no-repeat fixed 0 0 content-box contain; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+</body>
+</html>
