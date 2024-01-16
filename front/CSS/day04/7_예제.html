@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 문제</title>
+</head>
+<style>
+    body{
+        height: 1500px;
+        position:relative;
+    }
+    
+    a{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+    .jung{
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        border: 2px solid;
+        border-radius: 10px;
+    }
+    .jung1{
+        width: 60%;
+        text-align: center;
+        padding: 10px;
+    }
+    .jung1 input{
+        width: 100%;
+        border: 2px solid green;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .jung button{
+        border-radius: 10px;
+        width: 72px;
+        background-color: skyblue;
+        color: #FFF;
+        font-weight: bold;
+    }
+</style>
+<body>
+
+
+    <div class="jung">
+        <div class="jung1">
+            <input type="text" placeholder="검색어를 입력하세요">
+        </div>
+        <button type="button">검색</button>
+    </div>
+
+
+<a href="#">버튼버튼</a>
+    
+</body>
+<script>
+    var aTag = document.querySelector('a');
+
+    aTag.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+</html>
