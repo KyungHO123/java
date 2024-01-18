@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>즉시 실행 함수</title>
+</head>
+<body>
+    <script>
+        //일반함수 : 선언만 해서는 자동으로 호출이 안됨.
+        function test(){
+            console.log('테스트')
+        }
+        //즉시 실행함수 :
+        (function(){
+            document.write('즉시 실행함수');
+        }());
+    </script>
+    
+</body>
+</html>
