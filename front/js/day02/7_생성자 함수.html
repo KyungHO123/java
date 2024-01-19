@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>생성자 함수</title>
+</head>
+<body>
+	<script>
+
+		function User(name,age,height,weight){
+			this.name=name;
+			this.age=age;
+			this.height=height;
+			this.weight=weight;
+			//return this; 가 자동으로 추가
+		}
+		let user1 = new User('홍길동',21,190,100);
+		console.log(user1);
+		let user2 = new User('임꺽정',30,170,120);
+		console.log(user2);
+		
+	</script>
+</body>
+</html>
