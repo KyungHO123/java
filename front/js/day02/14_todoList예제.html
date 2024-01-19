@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <!-- input 태그를 이용하여 오늘의 할일을 입력받고, 추가 버튼을 클릭하면 오늘의 할일 화면에 추가되도록 코드를 작성하세요 -->
+   <input type="text" id="todo" placeholder="오늘의 할일을 입력하세요">
+   <button type="button" class="btn" onclick="TodoList()">확인</button>
+   <br>
+   <h3>오늘의 할일</h3>
+   <ul class="list"></ul>
+   <script>
+      function TodoList() {
+         let textElement = document.getElementById('todo');
+         let ok = textElement.value;
+
+         let list = document.getElementsByClassName('list')[0];      // 클래스는 번지로 가져와야한다.
+         list.innerHTML += `<li>${ok}</li>`;
+      }
+   </script>
+</body>
+</html>
