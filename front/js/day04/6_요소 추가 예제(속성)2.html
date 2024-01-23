@@ -9,7 +9,7 @@
 	<button id="btn">이미지 추가</button>
 	<div id="box"></div>
 	<script>
-		function createElement(tagName,text,attribute){
+		function createElement(tagName, text, attributes){
 			let element = document.createElement(tagName);
 			if(text){
 				let textNode = document.createTextNode(text);
@@ -20,23 +20,25 @@
 			}
 			for(key in attributes){
 				let attr = document.createAttribute(key);
-				atrr.value = attributes[key];
+				attr.value = attributes[key];
 				element.setAttributeNode(attr);
-				
 			}
 			return element;
 		}
-		let imh = createElement("img", null,{
-			src : "",
-			alt : "푸바오",
-			width : 100
-		});
-		let btn = document.getElementById("btn")
-		btn.onclick = document.getElementById("box")
-		let hr = createElement("hr")
-		box.attend(img);
-		box.attend(hr);
-		box.attend(h1);
+		let btn = document.getElementById("btn");
+		btn.onclick = function(){
+			let box = document.getElementById("box");
+			let img = createElement("img", null, {
+				src : "https://img.freepik.com/premium-photo/picture-of-a-cute-puppy-world-animal-day_944128-5890.jpg?w=1480",
+				alt : "강아지",
+				width : 100
+			});
+			let hr = createElement("hr");
+			let h1 = createElement("h1", "안녕하세요");
+			box.append(img);
+			box.append(hr);
+			box.append(h1);
+		}
 	</script>
 </body>
 </html>
