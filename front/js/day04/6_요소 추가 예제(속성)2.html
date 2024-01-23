@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가 예제</title>
+</head>
+<body>
+	<button id="btn">이미지 추가</button>
+	<div id="box"></div>
+	<script>
+		function createElement(tagName,text,attribute){
+			let element = document.createElement(tagName);
+			if(text){
+				let textNode = document.createTextNode(text);
+				element.append(textNode);
+			}
+			if(!attributes){
+				return element;
+			}
+			for(key in attributes){
+				let attr = document.createAttribute(key);
+				atrr.value = attributes[key];
+				element.setAttributeNode(attr);
+				
+			}
+			return element;
+		}
+		let imh = createElement("img", null,{
+			src : "",
+			alt : "푸바오",
+			width : 100
+		});
+		let btn = document.getElementById("btn")
+		btn.onclick = document.getElementById("box")
+		let hr = createElement("hr")
+		box.attend(img);
+		box.attend(hr);
+		box.attend(h1);
+	</script>
+</body>
+</html>

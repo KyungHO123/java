@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 추가 예제</title>
+
+</head>
+<body>
+	<button id="btn">이미지 추가</button>
+	<div id="box"></div>
+	<script>
+		let btn = document.getElementsByClassName("btn");
+		btn.onclick = function(){
+			//img
+			let img = document.createElement("img");
+			//src=""
+			let src = document.createAttribute("src");
+			//alt=" "
+			let alt = document.createAttribute("alt");
+			//width = " "
+			let width = document.createAttribute("width");
+			// src="https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/na/2024/01/22/6114248_high.jpg"
+			src.value = "https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/na/2024/01/22/6114248_high.jpg ";
+			// alt = "푸바오";
+			alt.value ="푸바오";
+			width.value = "100";
+			img.setAttributeNode(src);
+			img.setAttributeNode(alt);
+			img.setAttributeNode(width);
+			//<img alt = "강아지" src="https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/na/2024/01/22/6114248_high.jpg">
+			let box = document.getElementById("box");
+			box.append(img);
+
+		}
+	</script>
+</body>
+</html>
