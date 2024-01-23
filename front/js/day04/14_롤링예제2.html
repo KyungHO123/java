@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 예제1</title>
+	<style>
+		.container{
+			width: 300px; border: 2px solid black;
+			overflow: hidden;
+
+		}
+		.content-box{
+			width: 200%; background-color: red;
+		}
+		.box{
+			float: left;height: 50px;width: 50%;
+			transition: margin-left 1s;
+		}
+		.contetn-box::after{
+			clear: both; content: ''; display: block;
+		}
+		.box:nth-of-type(2){background-color: yellow;}
+		
+
+		
+		@keyframes moveLeft {
+			from{
+				margin: 0;
+			
+		}to{
+			margin-left: -300px;
+
+		}
+	}
+	@keyframes moveRight {
+		from{
+			margin-left: -300px;
+		}
+		to{
+			margin-left: 0px;
+		}
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="content-box">
+			<div class="box">1</div>
+			<div class="box">2</div>
+		</div>
+	</div>
+	<div class="btn-group">
+	</div>
+	<script>
+		let intervalTime = 1500;// 애니메이션 시간보다 커야 함
+
+		let firstBox;
+
+		contentBox.onmouseenter=function(){
+			clearInterval(id);
+		}
+		contentBox.onmouseleave = function(){
+			id = animationRun();
+		}
+		let id = animationRun();
+
+		setInterval(function(){
+			firstBox = document.querySelector("box:first-of-type");
+			firstBox.classList.add("left");
+			firstBox.addEventListener("animationend",animationend);
+		},intervalTime);
+
+		function animationEnd(){
+			firstBox.classList.remove("left");
+			let contentBox = document.getElementsByClassName("content-box")[0];
+			contentBox.append(firstBox);
+
+		function isAnimationRunning(element){
+			let style = getComputedStyle(element);
+			return style.animationPlayState == "running"
+		
+		}
+	</script>
+</body>
+</html>
