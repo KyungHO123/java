@@ -4,21 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>게시글 정규 표현식</title>
-
+	<title>비번 확인 예제</title>
 	<script src="../../static/jquery.js"></script>
+	<script src="//code.jquery.com/jquery-3.7.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 	<style>
 		.container {
 			max-width: 500px;
 			margin: 0 auto;
-		}
-
-		.input-group .input {
-			display: block;
-			width: 100%;
-			box-sizing: border-box;
 		}
 
 		.input-group {
@@ -49,7 +43,7 @@
 			cursor: pointer;
 		}
 
-		[class ^=error] {
+		[class^=error] {
 			color: red;
 		}
 	</style>
@@ -57,54 +51,46 @@
 
 <body>
 	<form action="" class="container">
-		<h1>게시글 등록</h1>
 		<div class="input-group">
 			<label for="">비번</label>
 			<input type="text" name="pw" id="pwd" class="input" placeholder="비번을 입력하세요.">
 		</div>
 		<div class="input-group">
 			<label for="">비번 확인</label>
-			<input type="text" name="pw" id="pwd2" class="input" placeholder="비번 확인을 입력하세요.">
+			<input type="text" name="pw2" id="pwd2" class="input" placeholder="비번 확인을 입력하세요.">
 		</div>
-		 
 		<button class="btn-submit">전송</button>
 	</form>
 	<script>
 		$("form").validate({
 			//유효성 검사
 			rules: {
-				pw :{
-					required : true,
+				pw: {
+					required: true,
 				},
-				pw2 :{
-					equalTo : pwd
-
-				},
-
+				pw2: {
+					equalTo: pwd
+				}
 			},
 			//유효성 검사 실패 시 출력할 문구
 			messages: {
 				pw: {
-					required: "필수 항목입니다.",
-					 
-
+					required: "필수항목입니다."
 				},
-				pw2 : {
-					required : "비밀번호와 일치하지 않습니다.",
-				 
-				},
+				pw2: {
+					equalTo: "비밀번호와 일치하지 않습니다."
+				}
 			}
 		});
 		$.validator.addMethod(
 			"regex",
-			function(value,element,regex){
+			function (value, element, regex) {
 				var re = new RegExp(regex);
 				return this.optional(element) || re.test(value);
 			},
-			"정규 표현식을 입력하세요."
+			"정규표현식을 확인하세요."
 		);
 	</script>
-
 </body>
 
 </html>
