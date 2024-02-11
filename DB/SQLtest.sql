@@ -5,7 +5,7 @@
 #create schema if not exists `TEST`;
 
 # 데이터베이스 삭제(있으면)
- drop  database if exists TEST;
+#boardboardmembermember drop  database if exists TEST;
 # drop schema if exists `TEST`;
 
 USE TEST;
@@ -13,6 +13,7 @@ USE TEST;
 #테이블 삭제
 DROP TABLE IF EXISTS MEMBER;
 
+INSERT INTO `MEMBER`(ID, PW, EMAIL, REG_DATE) VALUES("ID1", "비번123", "ID1@naver.com", NOW());
  
 # 테이블 생성
 CREATE TABLE IF NOT EXISTS MEMBER(
