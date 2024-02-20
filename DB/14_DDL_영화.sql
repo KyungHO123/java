@@ -7,154 +7,163 @@ USE `movie`;
 DROP TABLE IF EXISTS `character`;
 
 CREATE TABLE `character` (
-    `ch_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `ch_name` VARCHAR(30) NOT NULL,
-    `ch_birthday` DATE NOT NULL,
-    `ch_detail` TEXT NOT NULL,
-    `ch_na_name` VARCHAR(30) NOT NULL
+	`ch_num`	int	primary key auto_increment,
+	`ch_name`	varchar(30)	NOT NULL,
+	`ch_birthday`	date	NOT NULL,
+	`ch_detail`	text	NOT NULL,
+	`ch_na_name`	varchar(30)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `nation`;
 
 CREATE TABLE `nation` (
-    `na_name` VARCHAR(30) PRIMARY KEY
+	`na_name`	varchar(30)	primary key
 );
 
 DROP TABLE IF EXISTS `movie_person`;
 
 CREATE TABLE `movie_person` (
-    `mp_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `mp_role` CHAR(2) NOT NULL,
-    `mp_pic` VARCHAR(50) NULL,
-    `mp_ch_num` INT NOT NULL
+	`mp_num`	int	primary key auto_increment,
+	`mp_role`	char(2)	NOT NULL,
+	`mp_pic`	varchar(50)	NULL,
+	`mp_ch_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `movie`;
 
 CREATE TABLE `movie` (
-    `mo_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `mo_title` VARCHAR(50) NOT NULL,
-    `mo_date` DATE NOT NULL,
-    `mo_content` TEXT NOT NULL,
-    `mo_running` INT NOT NULL,
-    `mo_ag_name` VARCHAR(10) NOT NULL
+	`mo_num`	int	primary key auto_increment,
+	`mo_title`	varchar(50)	NOT NULL,
+	`mo_date`	date	NOT NULL,
+	`mo_content`	text	NOT NULL,
+	`mo_running`	int	NOT NULL,
+	`mo_ag_name`	varchar(10)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `movie_file`;
 
 CREATE TABLE `movie_file` (
-    `mf_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `mf_filename` VARCHAR(50) NOT NULL,
-    `mf_type` VARCHAR(10) NOT NULL,
-    `mf_mo_num` INT NOT NULL
+	`mf_num`	int	primary key auto_increment,
+	`mf_filename`	varchar(50)	NOT NULL,
+	`mf_type`	varchar(10)	NOT NULL,
+	`mf_mo_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `age`;
 
 CREATE TABLE `age` (
-    `ag_name` VARCHAR(10) PRIMARY KEY
+	`ag_name`	varchar(10)	primary key
 );
 
 DROP TABLE IF EXISTS `genre`;
 
 CREATE TABLE `genre` (
-    `ge_name` VARCHAR(10) PRIMARY KEY
+	`ge_name`	varchar(10)	primary key 
 );
 
 DROP TABLE IF EXISTS `region`;
 
 CREATE TABLE `region` (
-    `re_name` VARCHAR(10) PRIMARY KEY
+	`re_name`	varchar(10)	primary key
 );
 
 DROP TABLE IF EXISTS `theater`;
 
 CREATE TABLE `theater` (
-    `th_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `th_name` VARCHAR(10) NOT NULL,
-    `th_addr` VARCHAR(100) NOT NULL,
-    `th_seat` INT NOT NULL DEFAULT 0,
-    `th_screen` INT NOT NULL,
-    `th_re_name` VARCHAR(10) NOT NULL
+	`th_num`	int	primary key auto_increment,
+	`th_name`	varchar(10)	NOT NULL,
+	`th_addr`	varchar(100)	NOT NULL,
+	`th_seat`	int	NOT NULL DEFAULT 0,
+	`th_screen`	int	NOT NULL,
+	`th_re_name`	varchar(10)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `screen`;
 
 CREATE TABLE `screen` (
-    `sc_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `sc_name` INT NOT NULL,
-    `sc_seat` INT NOT NULL DEFAULT 0,
-    `sc_th_num` INT NOT NULL
+	`sc_num`	int	primary key auto_increment,
+	`sc_name`	int	NOT NULL,
+	`sc_seat`	int	NOT NULL DEFAULT 0,
+	`sc_th_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `seat`;
 
 CREATE TABLE `seat` (
-    `se_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `se_name` VARCHAR(3) NOT NULL,
-    `se_sc_num` INT NOT NULL
+	`se_num`	int	primary key auto_increment,
+	`se_name`	varchar(3)	NOT NULL,
+	`se_sc_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member` (
-    `me_id` VARCHAR(20) PRIMARY KEY,
-    `me_pw` VARCHAR(20) NOT NULL
+	`me_id`	varchar(20)	primary key,
+	`me_pw`	varchar(20)	NOT NULL,
+    `me_authority` varchar(5) NOT NULL DEFAULT 'USER'
 );
 
 DROP TABLE IF EXISTS `schedule`;
 
 CREATE TABLE `schedule` (
-    `sh_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `sh_date` DATE NOT NULL,
-    `sh_time` TIME NOT NULL,
-    `sh_morning` INT NOT NULL DEFAULT 0,
-    `sh_sc_num` INT NOT NULL,
-    `sh_mo_num` INT NOT NULL
+	`sh_num`	int	primary key auto_increment,
+	`sh_date`	date	NOT NULL,
+	`sh_time`	time	NOT NULL,
+	`sh_morning`	int	NOT NULL DEFAULT 0,
+	`sh_sc_num`	int	NOT NULL,
+	`sh_mo_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `join`;
 
 CREATE TABLE `join` (
-    `jo_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `jo_casting` VARCHAR(20) NOT NULL,
-    `jo_mo_num` INT NOT NULL,
-    `jo_mp_num` INT NOT NULL
+	`jo_num`	int	primary key auto_increment,
+	`jo_casting`	varchar(20)	NOT NULL,
+	`jo_mo_num`	int	NOT NULL,
+	`jo_mp_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `production_nation`;
 
 CREATE TABLE `production_nation` (
-    `pn_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `pn_na_name` VARCHAR(30) NOT NULL,
-    `pn_mo_num` INT NOT NULL
+	`pn_num`	int	primary key auto_increment,
+	`pn_na_name`	varchar(30)	NOT NULL,
+	`pn_mo_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `genre_include`;
 
 CREATE TABLE `genre_include` (
-    `gi_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `gi_mo_num` INT NOT NULL,
-    `gi_ge_name` VARCHAR(10) NOT NULL
+	`gi_num`	int	primary key auto_increment,
+	`gi_mo_num`	int	NOT NULL,
+	`gi_ge_name`	varchar(10)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `ticketing`;
 
 CREATE TABLE `ticketing` (
-    `ti_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `ti_adult` INT NOT NULL,
-    `ti_teenager` INT NOT NULL,
-    `ti_total_price` INT NOT NULL,
-    `ti_sh_num` INT NOT NULL,
-    `ti_me_id` VARCHAR(20) NOT NULL
+	`ti_num`	int	primary key auto_increment,
+	`ti_adult`	int	NOT NULL,
+	`ti_teenager`	int	NOT NULL,
+	`ti_total_price`	int	NOT NULL,
+	`ti_sh_num`	int	NOT NULL,
+	`ti_me_id`	varchar(20)	NOT NULL
 );
 
 DROP TABLE IF EXISTS `ticketing_list`;
 
 CREATE TABLE `ticketing_list` (
-    `tl_num` INT PRIMARY KEY AUTO_INCREMENT,
-    `tl_ti_num2` INT NOT NULL,
-    `tl_se_num` INT NOT NULL
+	`tl_num`	int	primary key auto_increment,
+	`tl_ti_num`	int	NOT NULL,
+	`tl_se_num`	int	NOT NULL
+);
+
+DROP TABLE IF EXISTS `price`;
+
+CREATE TABLE `price` (
+	`pr_num`	int	primary key auto_increment,
+	`pr_type`	varchar(5)	NOT NULL,
+	`pr_price`	int	NOT NULL
 );
 
 ALTER TABLE `character` ADD CONSTRAINT `FK_nation_TO_character_1` FOREIGN KEY (

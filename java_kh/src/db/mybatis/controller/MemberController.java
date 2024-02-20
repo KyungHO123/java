@@ -45,11 +45,11 @@ public class MemberController {
 	}
 
 	private void insertMember() {
-		System.out.print("아이디 : ");
+		System.out.println("아이디 : ");
 		String id = scan.next();
-		System.out.print("비번 : ");
+		System.out.println("비번 : ");
 		String pw = scan.next();
-		System.out.print("이메일 : ");
+		System.out.println("이메일 : ");
 		String email = scan.next();
 		MemberVO member = new MemberVO(id, pw, email);
 		if(memberService.insertMember(member)) {

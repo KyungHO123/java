@@ -3,8 +3,21 @@ DROP DATABASE IF EXISTS `movie`;
 CREATE DATABASE IF NOT EXISTS `movie`;
 
 USE `movie`;
+DROP TABLE IF EXISTS `price`;
 
--- DROP TABLE IF EXISTS `character`; 
+CREATE TABLE `price` (
+    `pr_num` INT PRIMARY KEY,
+    `pr_type` VARCHAR(5) NOT NULL,
+    `pr_price` INT NOT NULL
+);
+
+ALTER TABLE `price` ADD CONSTRAINT `PK_PRICE` PRIMARY KEY (
+	`pr_num`
+);
+
+
+
+DROP TABLE IF EXISTS `character`;
 
 CREATE TABLE `character` (
     `ch_num` INT PRIMARY KEY AUTO_INCREMENT,
@@ -99,8 +112,7 @@ DROP TABLE IF EXISTS `member`;
 
 CREATE TABLE `member` (
     `me_id` VARCHAR(20) PRIMARY KEY,
-    `me_pw` VARCHAR(20) NOT NULL,
-    `me_authority` varchar(5) not null default 'USER'
+    `me_pw` VARCHAR(20) NOT NULL
 );
 
 DROP TABLE IF EXISTS `schedule`;
