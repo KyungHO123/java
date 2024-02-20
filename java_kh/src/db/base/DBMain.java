@@ -2,12 +2,9 @@ package db.base;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.Statement;
 import java.util.Date;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +15,7 @@ public class DBMain {
 		//MySQL 설치 시 port 번호를 수정하지 않았다면 3306
 		String url = "jdbc:mysql://localhost:3306/test";
 		String id = "root";
-		String pw = "root";
+		String pw = "@Aqetu2486";
 		
 		Connection con = null;
 		try{
@@ -31,7 +28,7 @@ public class DBMain {
 		}
 
 		//insert문 예제
-		/*
+		
 		//Statement를 이용한 예제
 		String sql = "insert into member values('asdasd','pwasd','asd@naver.com',now())";
 		Statement stmt = null;
@@ -43,7 +40,7 @@ public class DBMain {
 			System.out.println("예외 발생");
 			e.printStackTrace();
 		}
-		*/
+		
 		//String sql = "쿼리";
 		//예시 ?을 이용하여 값을 동적으로 변경
 		/*String sql = "insert into member values(?,?,?,now())";
@@ -85,7 +82,7 @@ public class DBMain {
 			System.out.println("예외 발생");
 		}*/
 		//select문 예제
-		String sql = "select * from member";
+		/*String sql = "select * from member";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Member> list = new ArrayList<Member>();
@@ -110,7 +107,7 @@ public class DBMain {
 			}
 		} catch (SQLException e){
 			System.out.println("예외 발생");
-		}
+		}*/
 	}
 }
 @Data

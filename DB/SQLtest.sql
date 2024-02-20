@@ -5,7 +5,7 @@
 */
 
 # 데이터베이스 삭제(있으면)
-drop database if exists TEST;
+
 # drop schema if exists `TEST`;
 
 # 데이터베이스 추가(없으면)
