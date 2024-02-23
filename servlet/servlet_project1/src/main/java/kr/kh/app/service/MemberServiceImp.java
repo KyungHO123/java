@@ -36,6 +36,10 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		// 정규 표현식 체크 : to do
+		/*아이디는 [^a-zA-Z0-9]*$
+		 *비번은 [^a-zA-Z0-9\!,@,#,$\]*$
+		 * 
+		 * */
 		try {
 			// 아이디가 중복되면 예외가 발생
 			return memberDao.insertMember(memberVO);
