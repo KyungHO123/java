@@ -18,7 +18,6 @@ public class SignupServlet extends HttpServlet {
 	private MemberService memberservice = new MemberServiceImp();
 
 	public SignupServlet() {
-		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
