@@ -5,47 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인 페이지</title>
+<!-- Latest compiled and minified CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<!-- Latest compiled JavaScript -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="container">
-		<h1>회원가입</h1>
-		<form action="<c:url value="/signup" />" method="post">
+		<h1>로그인</h1>
+		<form action="<c:url value="/login" />" method="post">
 			<div class="mb-3 mt-3">
 				<label for="id" class="form-control">아이디</label> <input type="text"
 					class="form-control" id="id" placeholder="아이디를 입력하세요" name="id">
 			</div>
 			<div class="mb-3 mt-3">
 				<label for="pw" class="form-control">비번</label> <input
-					type="password" class="form-control" id="pw" placeholder="비번을 입력하세요"
-					name="pw">
-			</div>
-			<div class="mb-3 mt-3">
-				<label for="pw2" class="form-control">비번확인</label> <input
-					type="password" class="form-control" id="pw2" placeholder="비번 확인"
-					name="pw2">
-			</div>
-			<div class="mb-3 mt-3">
-				<label for="email" class="form-control">이메일</label> <input
-					type="text" class="form-control" id="email" placeholder="이메일을 입력하세요"
-					name="email">
+					type="password" class="form-control" id="pw"
+					placeholder="비번을 입력하세요" name="pw">
 			</div>
 
-			<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
+			<button type="submit" class="btn btn-outline-success col-12">로그인</button>
 		</form>
 	</div>
-
-
 
 
 </body>

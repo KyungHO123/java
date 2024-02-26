@@ -16,6 +16,5 @@
   </environments>
   <mappers>
    <mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
-   
   </mappers>
 </configuration>
