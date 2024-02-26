@@ -34,7 +34,7 @@
 <div class="container">
 	<h1>회원가입</h1>
 	<!-- 아이디, 비번, 비번확인, 이메일을 입력받아 서버로 전송하는 코드 get과 post 중에 선택해서 전송 -->
-	<form action="<%=request.getContextPath()%>" method="post">
+	<form action="<%=request.getContextPath()%>/signup" method="post">
 		<div class="mb-3 mt-3">
 		    <label for="id" class="form-label">아이디:</label>
 		    <input type="text" class="form-control" id="id" placeholder="아이디" name="id">
