@@ -31,12 +31,17 @@ public class SignupServlet extends HttpServlet {
 		// 이용중이라는 회원 상태가 DB에 저장되어 있는 경우
 		MemberVO member = new MemberVO(id, pw, email, "이용중");
 		boolean res = memberService.signup(member);
-		if(res) {
-			response.sendRedirect(request.getContextPath()+"/");
-		}else {
-			response.sendRedirect(request.getContextPath()+"/signup"); // get방식으로 새로고침
+		if (res) {
+			request.setAttribute("msg", "회원 가입에 성공 했습니다.");
+			request.setAttribute("url", "");
+//			response.sendRedirect(request.getContextPath()+"/");
+		} else {
+			request.setAttribute("msg", "회원 가입에 실패 했습니다.");
+			request.setAttribute("url", "signup");
+//			response.sendRedirect(request.getContextPath()+"/signup"); // get방식으로 새로고침
 //			doGet(request, response); 화면만 연결 알림창이 계속 뜸
 		}
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 
 	}
 
