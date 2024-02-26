@@ -13,35 +13,33 @@ import kr.kh.app.service.MemberServiceImp;
 
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		request.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String id = request.getParameter("id");// from 태그 안 입력 태그에 name이 id요소의 값을 가져옴
+		// 화면에서 보낸 데이터를 가져옴
+		// form태그 안 입력 태그에 name이 id 요소의 값을 가져옴
+		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
 		// 이용중이라는 회원 상태가 DB에 저장되어 있는 경우
 		MemberVO member = new MemberVO(id, pw, email, "이용중");
 		boolean res = memberService.signup(member);
 		if (res) {
-			request.setAttribute("msg", "회원 가입에 성공 했습니다.");
+			request.setAttribute("msg", "회원 가입에 성공했습니다.");
 			request.setAttribute("url", "");
 		} else {
-			request.setAttribute("msg", "회원 가입에 실패 했습니다.");
+			request.setAttribute("msg", "회원 가입에 실패했습니다.");
 			request.setAttribute("url", "signup");
-//			response.sendRedirect(request.getContextPath()+"/signup"); // get방식으로 새로고침
-//			doGet(request, response); 화면만 연결 알림창이 계속 뜸
 		}
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-
 	}
 
 }
