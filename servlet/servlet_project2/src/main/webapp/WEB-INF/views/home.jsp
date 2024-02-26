@@ -26,13 +26,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/signup"/>">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/login"/>">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="<c:url value="/board/list"/>">게시글</a></li>
 
 				</ul>
 			</div>
 		</div>
 	</nav>
+	<h1>메인페이지</h1>
 </body>
 </html>
