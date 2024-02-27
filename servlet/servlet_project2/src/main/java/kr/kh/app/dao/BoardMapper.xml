@@ -19,6 +19,7 @@
 		select * from board order by bo_num desc
 	</select>
 	
+	
 	<select id="selectCommunity" resultType="kr.kh.app.model.vo.CommunityVO">
 		select * from community where co_num = #{bo_co_num}
 	</select>
@@ -27,5 +28,10 @@
 		insert into board(bo_title, bo_content, bo_me_id, bo_co_num)
 		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},#{board.bo_co_num})
 	</insert>
+	
+	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
+		select * from community 
+	</select>
+	
 	
 </mapper>
