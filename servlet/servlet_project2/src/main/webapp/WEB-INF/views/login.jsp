@@ -20,7 +20,7 @@
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="container">
 		<h1>로그인</h1>
-		<form action="<c:url value="/login" />" method="post">
+		<form action="<c:url value="/login"/>" method="post">
 			<div class="mb-3 mt-3">
 				<label for="id" class="form-control">아이디</label> <input type="text"
 					class="form-control" id="id" placeholder="아이디를 입력하세요" name="id">

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		// LoginDTO 객체를 이용해서 memberService에게 MemberVO 객체를 달라고 요청.
 		LoginDTO loginDto = new LoginDTO(id, pw);
 		MemberVO user = memberService.getMember(loginDto);
-		
+
 		// 성공하면 세션에 회원 정보를 저장하고 메인 페이지로 이동
 		if (user != null) {
 			request.setAttribute("msg", "로그인에 성공 했습니다.");
