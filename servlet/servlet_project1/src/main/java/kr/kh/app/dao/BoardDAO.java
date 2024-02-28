@@ -23,4 +23,6 @@ public interface BoardDAO {
 
 	boolean updateView(@Param("num")int num);
 
+	boolean deleteBoard(@Param("num")int num);
+
 }

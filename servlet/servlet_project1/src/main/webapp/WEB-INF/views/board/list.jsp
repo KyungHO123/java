@@ -27,8 +27,7 @@
 						<c:if test='${pm.cri.type == "title" }'>selected</c:if>>제목</option>
 					<option value="writer"
 						<c:if test='${pm.cri.type == "writer" }'>selected</c:if>>작성자</option>
-				</select> 
-				<input type="text" class="form-control" placeholder="검색어를 입력하세요."
+				</select> <input type="text" class="form-control" placeholder="검색어를 입력하세요."
 					name="search" value="${pm.cri.search }">
 				<button class="btn btn-outline-warning">검색</button>
 			</div>
@@ -48,23 +47,16 @@
 					<tr>
 						<td>${board.bo_num }</td>
 						<td>${board.community.co_name}</td>
-						<td>
-							<c:url var="url" value="/board/detail">
+						<td><c:url var="url" value="/board/detail">
 								<c:param name="num" value="${board.bo_num}" />
-							</c:url>
-						</td>
-						<td>
-							<a href="${url}">${board.bo_title}</a>
-						</td>
-						<td>
-							<c:url var="page" value="/board/list">
+							</c:url></td>
+						<td><a href="${url}">${board.bo_title}</a></td>
+						<td><c:url var="page" value="/board/list">
 								<c:param name="type" value="writer" />
 								<c:param name="search" value="${board.bo_me_id}" />
 								<c:param name="page" value="1" />
 							</c:url></td>
-						<td>
-							<a href="${page}">${board.bo_me_id}</a>
-						</td>
+						<td><a href="${page}">${board.bo_me_id}</a></td>
 						<td>${board.bo_view }</td>
 					</tr>
 				</c:forEach>
