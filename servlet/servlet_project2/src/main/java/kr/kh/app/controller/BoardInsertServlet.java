@@ -37,7 +37,8 @@ public class BoardInsertServlet extends HttpServlet {
 		else {
 			//서비스에게 게시판 리스트를 가져오라고 시킴 : getCommunityList
 			ArrayList<CommunityVO> list = boardService.getCommunityList();
-			//화면에 게시판 리스트를 보냄
+			
+		//화면에 게시판 리스트를 보냄
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("/WEB-INF/views/board/insert.jsp").forward(request, response);
 		}
