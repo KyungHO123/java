@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	<div class="container">
-		<h1>마 개쉐이야</h1>
+		<h1>게시글 수정</h1>
 		<form action="<c:url value="/board/update"/>" method="post">
 			<input type="hidden" name="num" value="${board.bo_num}">
 			<div class="mb-3 mt-3">
