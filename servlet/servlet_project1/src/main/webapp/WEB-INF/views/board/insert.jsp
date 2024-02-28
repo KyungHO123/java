@@ -25,7 +25,7 @@
 	  	</div>
 		<div class="mb-3 mt-3">
 		    <label for="title" class="form-label">제목:</label>
-		    <input type="text" class="form-control" id="title" placeholder="제목" name="title">
+		    <input type="text" class="form-control" id="title" placeholder="제목" name="title" value="${board.bo_title}">
 	  	</div>
 	  	<div class="mb-3 mt-3">
 		    <label for="writer" class="form-label">작성자:</label>
@@ -33,7 +33,7 @@
 	  	</div>
 	  	<div class="mb-3 mt-3">
 		    <label for="content" class="form-label">내용:</label>
-		    <textarea rows="10" class="form-control" id="content" name="content" placeholder="내용"></textarea>
+		    <textarea rows="10" class="form-control" id="content" name="content" placeholder="내용">${board.bo_content}</textarea>
 	  	</div>
 	  	<button class="btn btn-outline-warning col-12">글 등록</button>
 	</form>

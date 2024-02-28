@@ -15,14 +15,6 @@
 			alert(msg);
 		}
 		location.href = '<c:url value = "/${url}"/>';
-
-		let redirectURL = '${url}'; //서버에서 보낸 url을 변수에 저장
-
-		if (redirectURL != '') {
-			location.href = '<c:url value = "/${url}"/>';
-		} else {
-			location.href = '<c:url value = "/"/>';
-		}
 	</script>
 </body>
 </html>
