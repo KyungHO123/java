@@ -2,11 +2,11 @@ package kr.kh.app.dao;
 
 import java.util.ArrayList;
 
-
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CommunityVO;
+import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.pagination.Criteria;
 
 public interface BoardDAO {
@@ -26,5 +26,13 @@ public interface BoardDAO {
 	boolean deleteBoard(@Param("num")int num);
 
 	boolean updateBoard(@Param("board")BoardVO board);
+
+	void insertFile(@Param("file")FileVO file);
+
+	FileVO selectFileByBo_num(@Param("num")int num);
+
+	void deleteFile(@Param("fi_num")int fi_num);
+
+	FileVO selectFile(@Param("fi_num")int fi_num);
 
 }
