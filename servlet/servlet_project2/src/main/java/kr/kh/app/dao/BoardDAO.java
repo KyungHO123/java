@@ -11,24 +11,29 @@ import kr.kh.app.pagination.Criteria;
 
 public interface BoardDAO {
 
-	ArrayList<BoardVO> selectBoardList(@Param("cri")Criteria cri);
+	ArrayList<BoardVO> selectBoardList(@Param("cri") Criteria cri);
 
-	boolean insertBoard(@Param("board")BoardVO board);
+	boolean insertBoard(@Param("board") BoardVO board);
 
 	ArrayList<CommunityVO> selectCommunityList();
 
-	int selectTotalCount(@Param("cri")Criteria cri);
+	int selectTotalCount(@Param("cri") Criteria cri);
 
-	boolean updateView(@Param("num")int num);
+	boolean updateView(@Param("num") int num);
 
-	BoardVO selectBoard(@Param("num")int num);
+	BoardVO selectBoard(@Param("num") int num);
 
-	boolean deleteBoard(@Param("num")int num);
+	boolean deleteBoard(@Param("num") int num);
 
-	boolean updateBoard(@Param("board")BoardVO board);
+	boolean updateBoard(@Param("board") BoardVO board);
 
-	void insertFile(@Param("file")FileVO fileVo);
+	void insertFile(@Param("file") FileVO fileVo);
 
-	FileVO selectFileByBo_num(@Param("num") int num);
+	// 파일 찾아오는 쿼리
+	ArrayList<FileVO> selectFileList(@Param("bo_num") int num);
+
+	void deleteFile(@Param("fi_num") int fi_num);
+
+	FileVO selectFile(@Param("fi_num") int num);
 
 }

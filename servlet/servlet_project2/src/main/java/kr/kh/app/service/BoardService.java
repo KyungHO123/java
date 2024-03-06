@@ -14,7 +14,7 @@ public interface BoardService {
 
 	ArrayList<BoardVO> getBoardList(Criteria cri);
 
-	boolean insertBoard(BoardVO board ,ArrayList<Part> parList);
+	boolean insertBoard(BoardVO board, ArrayList<Part> partList);
 
 	ArrayList<CommunityVO> getCommunityList();
 
@@ -26,8 +26,8 @@ public interface BoardService {
 
 	boolean deleteBoard(int num, MemberVO user);
 
-	boolean updateBoard(BoardVO board, MemberVO user);
+	boolean updateBoard(BoardVO board, MemberVO user, String[] nums, ArrayList<Part> parList);
 
-	FileVO getFile(int num);
+	ArrayList<FileVO> getFileList(int num);
 
 }

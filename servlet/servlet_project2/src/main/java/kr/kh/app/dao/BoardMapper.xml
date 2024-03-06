@@ -4,105 +4,107 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.BoardDAO">
 	<resultMap type="kr.kh.app.model.vo.BoardVO" id="BoardMap">
-		<id property="bo_num" column="bo_num" />
-		<result property="bo_co_num" column="bo_co_num" />
-		<result property="bo_me_id" column="bo_me_id" />
-		<result property="bo_title" column="bo_title" />
-		<result property="bo_content" column="bo_content" />
-		<result property="bo_view" column="bo_view" />
-		<result property="bo_report_count" column="bo_report_count" />
-		<collection property="community"
-			ofType="kr.kh.app.model.vo.CommunityVO" column="bo_co_num"
-			select="selectCommunity" />
+		<id property="bo_num" column="bo_num"/>
+		<result property="bo_co_num" column="bo_co_num"/>
+		<result property="bo_me_id" column="bo_me_id"/>
+		<result property="bo_title" column="bo_title"/>
+		<result property="bo_content" column="bo_content"/>
+		<result property="bo_view" column="bo_view"/>
+		<result property="bo_report_count" column="bo_report_count"/>
+		<collection property="community" ofType="kr.kh.app.model.vo.CommunityVO"
+		 	column="bo_co_num" select="selectCommunity"/>
 	</resultMap>
-	<select id="selectFileByBo_num"
-		resultType="kr.kh.app.model.vo.FileVO">
-		select * from file where fi_bo_num = #{num}
-	</select>
-
+	
 	<select id="selectBoardList" resultMap="BoardMap">
 		<!-- type과 검색어를 이용하여 쿼리를 구성, if태그를 활용 -->
-		select * from board
+		select * from board 
 		<choose>
 			<!-- 전체 검색 -->
 			<when test='cri.type == "all"'>
-				where
-				bo_title like concat('%',#{cri.search}, '%') or
-				bo_me_id like concat('%',#{cri.search}, '%')
+				where 
+					bo_title like concat('%',#{cri.search}, '%') or 
+					bo_me_id like concat('%',#{cri.search}, '%')
 			</when>
 			<!-- 제목 또는 작성자 검색 -->
 			<otherwise>
 				where
-				${cri.type} like concat('%',#{cri.search}, '%')
+					${cri.type} like concat('%',#{cri.search}, '%')
 			</otherwise>
 		</choose>
 		order by bo_num desc
 		<!-- 현재 페이지 정보에 맞는 게시글을 위한 limit절 작성 -->
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
-
-	<select id="selectCommunity"
-		resultType="kr.kh.app.model.vo.CommunityVO">
+	
+	<select id="selectCommunity" resultType="kr.kh.app.model.vo.CommunityVO">
 		select * from community where co_num = #{bo_co_num}
 	</select>
-
-	<insert id="insertBoard" useGeneratedKeys="true"
-		keyProperty="board.bo_num">
-		insert into board(bo_title, bo_content, bo_me_id,
-		bo_co_num)
+	
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+		insert into board(bo_title, bo_content, bo_me_id, bo_co_num)
 		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},#{board.bo_co_num})
 	</insert>
-
-	<select id="selectCommunityList"
-		resultType="kr.kh.app.model.vo.CommunityVO">
+	
+	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
 		select * from community
 	</select>
-
+	
 	<select id="selectTotalCount" resultType="int">
-		select count(*) from board
+		select count(*) from board 
 		<choose>
 			<!-- 전체 검색 -->
 			<when test='cri.type == "all"'>
-				where
-				bo_title like concat('%',#{cri.search}, '%') or
-				bo_me_id like concat('%',#{cri.search}, '%')
+				where 
+					bo_title like concat('%',#{cri.search}, '%') or 
+					bo_me_id like concat('%',#{cri.search}, '%')
 			</when>
 			<!-- 제목 또는 작성자 검색 -->
 			<otherwise>
 				where
-				${cri.type} like concat('%',#{cri.search}, '%')
+					${cri.type} like concat('%',#{cri.search}, '%')
 			</otherwise>
 		</choose>
 	</select>
 	<update id="updateView">
 		update board
 		set
-		bo_view = bo_view + 1
+			bo_view = bo_view + 1
 		where
-		bo_num =
-		#{num}
+			bo_num = #{num}
 	</update>
 	<select id="selectBoard" resultMap="BoardMap">
 		select * from board
 		where
-		bo_num = #{num}
+			bo_num = #{num}
 	</select>
 	<delete id="deleteBoard">
 		delete from board
 		where
-		bo_num = #{num}
+			bo_num = #{num}
 	</delete>
 	<update id="updateBoard">
 		update board set
-		bo_title = #{board.bo_title},
-		bo_content = #{board.bo_content},
-		bo_co_num = #{board.bo_co_num}
+			bo_title = #{board.bo_title},
+			bo_content = #{board.bo_content},
+			bo_co_num = #{board.bo_co_num}
 		where
-		bo_num = #{board.bo_num}
+			bo_num = #{board.bo_num}
 	</update>
-
 	<insert id="insertFile">
-		insert into file(fi_bo_num , fi_name, fi_ori_name)
+		insert into file(fi_bo_num, fi_name, fi_ori_name)
 		values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})
 	</insert>
+	<!-- 파일 가져오는 쿼리 -->
+	<select id="selectFileList" resultType="kr.kh.app.model.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
+	</select>
+	
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
+	
+	<select id="selectFile" resultType="kr.kh.app.model.vo.FileVO">
+			select * from file where fi_num = #{fi_num}
+	</select>
+	
 </mapper>
