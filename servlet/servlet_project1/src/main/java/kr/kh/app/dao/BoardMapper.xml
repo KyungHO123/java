@@ -3,41 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.BoardDAO">
-	<!-- resultMap은 클래스 멤버 이름과 테이블의 속성 이름이 다른 경우 맵핑하기위해 사용 property는 클래스 멤버변수이름, 
-		column은 테이블 속성 이름 -->
+	<!-- 
+	resultMap은 클래스 멤버 이름과 테이블의 속성 이름이 다른 경우 맵핑하기위해 사용
+	property는 클래스 멤버변수이름, column은 테이블 속성 이름
+	-->
 	<resultMap type="kr.kh.app.model.vo.BoardVO" id="BoardMap">
-		<id property="bo_num" column="bo_num" />
-		<result property="bo_co_num" column="bo_co_num" />
-		<result property="bo_me_id" column="bo_me_id" />
-		<result property="bo_title" column="bo_title" />
-		<result property="bo_content" column="bo_content" />
-		<result property="bo_view" column="bo_view" />
-		<result property="bo_report_count" column="bo_report_count" />
-		<collection property="community"
-			ofType="kr.kh.app.model.vo.CommunityVO" column="bo_co_num"
-			select="selectCommunity" />
+		<id property="bo_num" column="bo_num"/>
+		<result property="bo_co_num" column="bo_co_num"/>
+		<result property="bo_me_id" column="bo_me_id"/>
+		<result property="bo_title" column="bo_title"/>
+		<result property="bo_content" column="bo_content"/>
+		<result property="bo_view" column="bo_view"/>
+		<result property="bo_report_count" column="bo_report_count"/>
+		<collection property="community" ofType="kr.kh.app.model.vo.CommunityVO"
+			column="bo_co_num" select="selectCommunity"/>
 	</resultMap>
-	<!-- useGenratedKeys, keyProperty는 게시글이 DB에 추가 됐을 때 생성된 기본키를 가져와서 board객체에 
-		저장 -->
-	<insert id="insertBoard" useGeneratedKeys="true"
-		keyProperty="board.bo_num">
-		INSERT INTO BOARD(bo_title, bo_content, bo_co_num,
-		bo_me_id)
+	<!-- useGenratedKeys, keyProperty는 게시글이 DB에 추가 됐을 때 생성된 기본키를 가져와서 board객체에 저장 -->
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+		INSERT INTO BOARD(bo_title, bo_content, bo_co_num, bo_me_id)
 		VALUES(#{board.bo_title},#{board.bo_content},#{board.bo_co_num},#{board.bo_me_id})
 	</insert>
-	<select id="selectCommunityList"
-		resultType="kr.kh.app.model.vo.CommunityVO">
+	<select id="selectCommunityList" resultType="kr.kh.app.model.vo.CommunityVO">
 		SELECT * FROM COMMUNITY
 	</select>
 	<select id="selectBoardList" resultMap="BoardMap">
-		SELECT *
-		FROM BOARD
+		SELECT * 
+		FROM BOARD 
 		<if test='cri.type=="all"'>
-			where bo_title like concat('%', #{cri.search},'%')
-			or bo_me_id = #{cri.search}
+			where bo_title like concat('%', #{cri.search},'%') 
+				or bo_me_id = #{cri.search}
 		</if>
 		<if test='cri.type=="title"'>
-			where bo_title like concat('%', #{cri.search},'%')
+			where bo_title like concat('%', #{cri.search},'%') 
 		</if>
 		<if test='cri.type=="writer"'>
 			where bo_me_id = #{cri.search}
@@ -45,82 +42,83 @@
 		ORDER BY BO_NUM DESC
 		LIMIT #{cri.pageStart}, #{cri.perPageNum}
 	</select>
-	<select id="selectCommunity"
-		resultType="kr.kh.app.model.vo.CommunityVO">
+	<select id="selectCommunity" resultType="kr.kh.app.model.vo.CommunityVO">
 		select * from community where co_num = #{bo_co_num}
 	</select>
 	<select id="selectTotalCount" resultType="int">
-		SELECT count(*)
-		FROM BOARD
+		SELECT count(*) 
+		FROM BOARD 
 		<if test='cri.type=="all"'>
-			where bo_title like concat('%', #{cri.search},'%')
-			or bo_me_id = #{cri.search}
+			where bo_title like concat('%', #{cri.search},'%') 
+				or bo_me_id = #{cri.search}
 		</if>
 		<if test='cri.type=="title"'>
-			where bo_title like concat('%', #{cri.search},'%')
+			where bo_title like concat('%', #{cri.search},'%') 
 		</if>
 		<if test='cri.type=="writer"'>
 			where bo_me_id = #{cri.search}
 		</if>
 	</select>
 	<select id="selectBoard" resultMap="BoardMap">
-		select * from board where
-		bo_num = #{num}
+		select * from board where bo_num = #{num}
 	</select>
 	<update id="updateView">
-		update board set bo_view = bo_view + 1 where bo_num =
-		#{num}
+		update board set bo_view = bo_view + 1 where bo_num = #{num}
 	</update>
 	<delete id="deleteBoard">
 		delete from board where bo_num = #{num}
 	</delete>
 	<update id="updateBoard">
 		update board set
-		bo_title = #{board.bo_title},
-		bo_content = #{board.bo_content},
-		bo_co_num = #{board.bo_co_num}
+			bo_title = #{board.bo_title},
+			bo_content = #{board.bo_content},
+			bo_co_num = #{board.bo_co_num}
 		where
-		bo_num = #{board.bo_num}
+			bo_num = #{board.bo_num}
 	</update>
 	<insert id="insertFile">
 		insert into file(fi_bo_num, fi_ori_name, fi_name)
 		values(#{file.fi_bo_num},#{file.fi_ori_name},#{file.fi_name})
 	</insert>
-	<select id="selectFileByBo_num"
-		resultType="kr.kh.app.model.vo.FileVO">
-		select * from file where fi_bo_num = #{num}
+	<select id="selectFileByBo_num" resultType="kr.kh.app.model.vo.FileVO">
+		select * from file where fi_bo_num = #{num} 
 	</select>
 	<delete id="deleteFile">
 		delete from file where fi_num = #{fi_num}
 	</delete>
 	<select id="selectFile" resultType="kr.kh.app.model.vo.FileVO">
-		select * from file where
-		fi_num = #{fi_num}
+		select * from file where fi_num = #{fi_num} 
 	</select>
-	<select id="selectRecommend"
-		resultType="kr.kh.app.model.vo.RecommendVO">
-		select * from recommend where re_bo_num = #{bo_num} and
-		re_me_id = #{me_id}
+	<select id="selectRecommend" resultType="kr.kh.app.model.vo.RecommendVO">
+		select * from recommend where re_bo_num = #{bo_num} and re_me_id = #{me_id}
 	</select>
 	<insert id="insertRecommend">
 		insert into recommend(re_me_id, re_bo_num, re_state)
 		values(#{re.re_me_id},#{re.re_bo_num},#{re.re_state})
 	</insert>
 	<update id="updateRecommend">
-		update recommend set re_state = #{re.re_state} where
-		re_num = #{re.re_num}
+		update recommend set re_state = #{re.re_state} where re_num = #{re.re_num}
 	</update>
-
 	<insert id="insertComment">
-		insert into comment(cm_bo_num,cm_content,cm_me_id)
+		insert into comment(cm_bo_num, cm_content, cm_me_id)
 		values(#{co.cm_bo_num},#{co.cm_content},#{co.cm_me_id})
 	</insert>
-
-	<select id="selectCommentList"
-		resultType="kr.kh.app.model.vo.CommentVO">
-		select * from comment
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment 
 		where cm_bo_num = #{cri.boNum}
 		order by cm_num desc
-		limit #{cri.pageStart},#{cri.perPageNum}
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
+	
+	<select id="selectTotalCountComment" resultType="int">
+		select count(*) from comment
+		where cm_bo_num = #{cri.boNum}
+	</select>
+	<select id="selectComment" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment where cm_num = #{cm_num}
+	</select>
+	
+	<delete id="deleteComment">
+		delete from comment where cm_num = #{cm_num}
+	</delete>
 </mapper>

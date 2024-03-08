@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
+import kr.kh.app.pagination.PageMaker;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
 
@@ -34,9 +37,22 @@ public class CommentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		CommentCriteria cri = new CommentCriteria(page, 2, boNum);
-		JSONObject jobj = new JSONObject();
+		//현재 페이지에 맞는 댓글을 가져오라고 시킴
 		ArrayList<CommentVO> list = boardService.getCommentList(cri);
-		jobj.put("lsit", list);
+		//전체 댓글 수 
+		int totalCount = boardService.getTotalCountComment(cri);
+		
+		PageMaker pm = new PageMaker(5, cri, totalCount);
+		JSONObject jobj = new JSONObject();
+		ObjectMapper om = new ObjectMapper();
+		String pmStr = "" ;
+		try {
+			pmStr = om.writeValueAsString(pmStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		jobj.put("list", list);
+		jobj.put("pmStr", pmStr);
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jobj);
 
