@@ -107,4 +107,14 @@
 			select * from file where fi_num = #{fi_num}
 	</select>
 	
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment where cm_bo_num = #{cri.search}
+		order by cm_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotalCommentCount" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment
+	</select>
+	
 </mapper>

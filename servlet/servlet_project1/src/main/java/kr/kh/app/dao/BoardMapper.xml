@@ -109,16 +109,18 @@
 		order by cm_num desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
-	
 	<select id="selectTotalCountComment" resultType="int">
-		select count(*) from comment
+		select count(*) from comment 
 		where cm_bo_num = #{cri.boNum}
 	</select>
 	<select id="selectComment" resultType="kr.kh.app.model.vo.CommentVO">
 		select * from comment where cm_num = #{cm_num}
 	</select>
-	
 	<delete id="deleteComment">
 		delete from comment where cm_num = #{cm_num}
 	</delete>
+	<update id="updateComment">
+		update comment set cm_content = #{co.cm_content} where cm_num = #{co.cm_num}
+		
+	</update>
 </mapper>

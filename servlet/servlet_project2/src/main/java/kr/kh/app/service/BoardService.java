@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.Part;
 
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.CommunityVO;
 import kr.kh.app.model.vo.FileVO;
 import kr.kh.app.model.vo.MemberVO;
@@ -29,5 +30,9 @@ public interface BoardService {
 	boolean updateBoard(BoardVO board, MemberVO user, String[] nums, ArrayList<Part> parList);
 
 	ArrayList<FileVO> getFileList(int num);
+
+	ArrayList<CommentVO> getCommentList(Criteria cri);
+
+	int getTotalCommentCount(Criteria cri);
 
 }
