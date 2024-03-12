@@ -116,7 +116,7 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- mybatis 의존성 추가 //여기 부터 추가-->
+		<!-- mybatis 의존성 추가 //여기 부터 추가 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -134,11 +134,17 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.11</version>
 		</dependency>
-		<!-- spring-jdbc 추가  // 여기까지-->
+		<!-- spring-jdbc 추가 // 여기까지 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
 		</dependency>
 	</dependencies>
 	<build>
