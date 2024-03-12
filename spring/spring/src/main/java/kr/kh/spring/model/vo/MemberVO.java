@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class MemeberVO {
+public class MemberVO {
 	
 	private String me_id;
 	private String me_pw;
