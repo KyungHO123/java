@@ -15,7 +15,7 @@ CREATE TABLE `member` (
     `me_fail` INT NOT NULL DEFAULT 0
     
 );
-INSERT INTO MEMBER_STATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
+
 DROP TABLE IF EXISTS `member_state`;
 
 CREATE TABLE `member_state` (
@@ -155,3 +155,4 @@ ALTER TABLE `report` ADD CONSTRAINT `FK_report_type_TO_report_1` FOREIGN KEY (
 REFERENCES `report_type` (
    `rt_name`
 );
+INSERT INTO MEMBER_STATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');

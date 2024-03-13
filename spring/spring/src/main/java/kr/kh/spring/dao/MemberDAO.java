@@ -10,4 +10,6 @@ public interface MemberDAO {
 
 	public MemberVO selectMember(@Param("id")String id);
 
+	public boolean insertMember(MemberVO member);
+
 }
