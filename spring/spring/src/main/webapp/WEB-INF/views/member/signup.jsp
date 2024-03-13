@@ -19,7 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
    
 	
-<title>회원가입</title>
+<title>스프링 - 회원가입</title>
 
 </head>
 <body>
