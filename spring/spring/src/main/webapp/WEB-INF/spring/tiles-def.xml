@@ -7,9 +7,7 @@
 	<!-- name은 컨트롤러 메서드에서 보낸 문자열을 의미 -->
     <definition name="/*/*" template="/WEB-INF/views/layout/baseLayout.jsp">
         <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-        <put-attribute name="body" value="/WEB-INF/views/common/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/{1}/{2}.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />        
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
     </definition>
- 
-   
 </tiles-definitions>
