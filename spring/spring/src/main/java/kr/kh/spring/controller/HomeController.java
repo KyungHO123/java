@@ -23,21 +23,21 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 
-		return "home";
+		return "/main/home";
 	}
 
 	// 회원가입 메서드
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup(Model model) {
 
-		return "member/signup";
+		return "/member/signup";
 	}
 
 	// 로그인 메서드
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
 
-		return "member/login";
+		return "/member/login";
 	}
 
 	// 회원가입 메서드
