@@ -74,3 +74,5 @@
 		<li class="page-item"><a class="page-link" href="${url}">다음</a></li>
 	</c:if>
 </ul>
+
+<a class="btn btn-outline-success" href='<c:url value="/board/insert"/>'>글 쓰기</a>
