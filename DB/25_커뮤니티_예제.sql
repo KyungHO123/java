@@ -55,6 +55,8 @@ WHERE
 ORDER BY BO_NUM DESC 
 LIMIT 0, 10;
 
+select * from community;
+
 # 3번 게시글을 상세 조회했을 때 실행되는 쿼리 
 # 1. 3번 게시글의 조회수를 증가하는 쿼리
 UPDATE BOARD SET BO_VIEW = BO_VIEW + 1 WHERE BO_NUM = 3;

@@ -16,7 +16,21 @@
 
 	<!-- url이 /resources로 시작하면 /webapp 폴더안에 resources폴더에 있는 파일들을 가져오도록 설정 -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/download/**" location="file:///D:/uploads/" />
 
+	<!-- servlet-context.xml 첨부파일 용량제한 bean -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 업로드 최대 크기 10Mb 50으로 늘리고 싶으면 x5 하면 됨. -->
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+
+		<!-- 첨부파일을 업로드할 서버 경로 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<!-- <beans:constructor-arg value="서버에 저장할 경로"/> -->
+		<beans:constructor-arg
+			value="D:\\uploads" />
+	</beans:bean>
 
 	<!-- 컨트롤러에서 문자열을 리턴하면 뷰리졸버에서 어떤 하면을 연결할지를 설정하는 코드 -->
 	<beans:bean
@@ -41,6 +55,8 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+
+
 
 
 	<!-- 클래스들을 읽어 올 수 있게 기본 패키지를 지정 " .* " 을 붙여주기 -->

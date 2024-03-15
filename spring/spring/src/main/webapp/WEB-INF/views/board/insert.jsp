@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<form action='<c:url value="/board/insert"/>' method="post">
+	<form action='<c:url value="/board/insert"/>' method="post" enctype="multipart/form-data">
 		<h1>게시글 등록</h1>
 		<div class="form-group">
 			<label for="co_name">게시판</label> <select name="bo_co_num"
@@ -37,7 +37,13 @@
 			<label for="bo_content">내용</label>
 			<textarea class="form-control" id="bo_content" name="bo_content"></textarea>
 		</div>
-		<button class="btn btn-outline-success col-12">글쓰기</button>
+		<div class="form-group">
+			<label>첨부파일(최대 3개)</label>
+			<input type="file" class="form-control" name="file">
+			<input type="file" class="form-control" name="file">
+			<input type="file" class="form-control" name="file">
+		</div>
+		<button class="btn btn-outline-success col-12">게시글 등록</button>
 	</form>
 	<script type="text/javascript">
 		$("form").submit(function() {

@@ -68,6 +68,24 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
+
+
+
+		<!-- pom.xml 첨부파일 업로드 의존성 추가 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		
+		<!-- pom.xml 첨부파일 어노테이션 의존성 추가 -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
