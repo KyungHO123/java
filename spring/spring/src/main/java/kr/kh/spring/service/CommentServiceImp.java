@@ -50,17 +50,29 @@ public class CommentServiceImp implements CommentService {
 
 	@Override
 	public boolean deleteComment(CommentVO comment, MemberVO user) {
-		if(comment == null)
+		if (comment == null)
 			return false;
-		if(user == null)
+		if (user == null)
 			return false;
-		//작성자인지 확인
+		// 작성자인지 확인
 		CommentVO dbComment = commentDao.selectComment(comment.getCm_num());
-		if(dbComment == null ||
-				!dbComment.getCm_me_id().equals(user.getMe_id()))
+		if (dbComment == null || !dbComment.getCm_me_id().equals(user.getMe_id()))
 			return false;
-		//댓글 삭제
-		
+		// 댓글 삭제
+
 		return commentDao.deleteComment(comment.getCm_num());
+	}
+
+	@Override
+	public boolean updateComment(CommentVO comment, MemberVO user) {
+		if (comment == null || !checkString(comment.getCm_content()))
+			return false;
+		if (user == null)
+			return false;
+		CommentVO dbComment = commentDao.selectComment(comment.getCm_num());
+		if (dbComment == null || !dbComment.getCm_me_id().equals(user.getMe_id()))
+			return false;
+
+		return commentDao.updateComment(comment);
 	}
 }
