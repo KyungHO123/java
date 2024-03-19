@@ -225,8 +225,8 @@ function checkLogin() {
 </script>
 
 
-<!-- 댓글 삭제 -->
-<script type="text/javascript">
+	<!-- 댓글 삭제 -->
+	<script type="text/javascript">
 $(document).on('click','.btn-comment-del',function(){
 	//서버로 보낼 데이터 생성
 	let comment = {
@@ -242,7 +242,12 @@ $(document).on('click','.btn-comment-del',function(){
 		contentType : "application/json; charset=utf-8",
 		dataType : "json", 
 		success : function (data){
-			console.log(data);
+			if(data.result){
+				alert('댓글을 삭제했습니다.');
+				getCommentList(cri);
+			}else{
+				alert('댓글 삭제를 실패했습니다.');
+			}
 		}, 
 		error : function(jqXHR, textStatus, errorThrown){
 
