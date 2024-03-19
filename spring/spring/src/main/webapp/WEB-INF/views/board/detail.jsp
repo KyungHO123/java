@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,76 +8,80 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-   <h1>게시글 상세</h1>
-   <div>
-      <label>제목</label>
-      <div class="form-control">${board.bo_title}</div>
-   </div>
-   <div>
-      <label>작성자</label>
-      <div class="form-control">${board.bo_me_id}</div>
-   </div>
-   <div>
-      <label>조회수</label>
-      <div class="form-control">${board.bo_view}</div>
-   </div>
-   <div class="input-group mb-3 mt-3">
-      <button class="btn btn-outline-success btn-up col-6">추천(${board.bo_up})</button>
-      <button class="btn btn-outline-success btn-down col-6">비추천(${board.bo_down})</button>
-   </div>
-   <div>
-      <label>내용</label>
-      <div class="form-control" style="min-height: 400px">${board.bo_content}</div>
-   </div>
-   <div>
-      <c:choose>
-         <c:when test="${fileList.size() != 0}">
-            <label>첨부파일</label>
-            <c:forEach items="${fileList }" var="file">
-               <a href="<c:url value="/download${file.fi_name}"/>" 
-                  class="form-control"
-                  download="${file.fi_ori_name}">${file.fi_ori_name}</a>
-            </c:forEach>
-         </c:when>
-         <c:otherwise>
-            <div>첨부파일 없음</div>
-         </c:otherwise>
-      </c:choose>
-   </div>
-   
-   <div class="container-comment mt-3 mb-3">
-      <h2>댓글(<span class="comment-total">2</span>)</h2>
-      <div class="box-comment-list">
-         <div class="box-comment row">
-            <div class="col-3">아이디</div>
-            <div class="col-9">내용</div>
-         </div>
-      </div>
-      <div class="box-pagination">
-         <ul class="pagination justify-content-center"></ul>
-      </div>
-      <div class="box-commnt-insert">
-         <div class="input-group mb-3">
-            <textarea class="form-control textarea-comment"></textarea>
-            <button class="btn btn-outline-success btn-comment-insert">댓글 등록</button>
-         </div>
-      </div>
-      <hr>
-   </div>
-   <c:url value="/board/list" var="url">
-      <c:param name="page" value="${cri.page}"/>
-      <c:param name="type" value="${cri.type}"/>
-      <c:param name="search" value="${cri.search}"/>
-   </c:url>
-   <a href="${url}" class="btn btn-outline-dark">목록으로</a>
-   <c:if test="${user.me_id == board.bo_me_id}">
-      <a href="<c:url value="/board/delete?boNum=${board.bo_num}"/>" class="btn btn-outline-success">삭제</a>
-      <a href="<c:url value="/board/update?boNum=${board.bo_num}"/>" class="btn btn-outline-warning">수정</a>
-   </c:if>
-</div>
-<!-- 댓글 리스트 조회 -->
-<script type="text/javascript">
+	<div>
+		<h1>게시글 상세</h1>
+		<div>
+			<label>제목</label>
+			<div class="form-control">${board.bo_title}</div>
+		</div>
+		<div>
+			<label>작성자</label>
+			<div class="form-control">${board.bo_me_id}</div>
+		</div>
+		<div>
+			<label>조회수</label>
+			<div class="form-control">${board.bo_view}</div>
+		</div>
+		<div class="input-group mb-3 mt-3">
+			<button class="btn btn-outline-success btn-up col-6">추천(${board.bo_up})</button>
+			<button class="btn btn-outline-success btn-down col-6">비추천(${board.bo_down})</button>
+		</div>
+		<div>
+			<label>내용</label>
+			<div class="form-control" style="min-height: 400px">${board.bo_content}</div>
+		</div>
+		<div>
+			<c:choose>
+				<c:when test="${fileList.size() != 0}">
+					<label>첨부파일</label>
+					<c:forEach items="${fileList }" var="file">
+						<a href="<c:url value="/download${file.fi_name}"/>"
+							class="form-control" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div>첨부파일 없음</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
+
+		<div class="container-comment mt-3 mb-3">
+			<h2>
+				댓글(<span class="comment-total">2</span>)
+			</h2>
+			<div class="box-comment-list">
+				<div class="box-comment row">
+					<div class="col-3">아이디</div>
+					<div class="col-9">내용</div>
+				</div>
+			</div>
+			<div class="box-pagination">
+				<ul class="pagination justify-content-center"></ul>
+			</div>
+			<div class="box-commnt-insert">
+				<div class="input-group mb-3">
+					<textarea class="form-control textarea-comment"></textarea>
+					<button class="btn btn-outline-success btn-comment-insert">댓글
+						등록</button>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<c:url value="/board/list" var="url">
+			<c:param name="page" value="${cri.page}" />
+			<c:param name="type" value="${cri.type}" />
+			<c:param name="search" value="${cri.search}" />
+		</c:url>
+		<a href="${url}" class="btn btn-outline-dark">목록으로</a>
+		<c:if test="${user.me_id == board.bo_me_id}">
+			<a href="<c:url value="/board/delete?boNum=${board.bo_num}"/>"
+				class="btn btn-outline-success">삭제</a>
+			<a href="<c:url value="/board/update?boNum=${board.bo_num}"/>"
+				class="btn btn-outline-warning">수정</a>
+		</c:if>
+	</div>
+	<!-- 댓글 리스트 조회 -->
+	<script type="text/javascript">
 //댓글 페이지 정보를 가지고 있는 객체를 선언
 let cri = {
    page : 1,
@@ -154,15 +158,28 @@ $(document).on('click','.box-pagination .page-link',function(){
    getCommentList(cri);
 })
 </script>
-<!-- 댓글 등록 -->
-<script type="text/javascript">
+	<!-- 댓글 등록 -->
+	<script type="text/javascript">
 //댓글 등록 버튼의 클릭 이벤트를 등록
 $(".btn-comment-insert").click(function(){
+	//로그인 확인
+	if(!checkLogin()){
+		return;
+	}
+	//
+	let cm_content = 
    //서버에 보낼 데이터를 생성 => 댓글 등록을 위한 정보 => 댓글 내용, 게시글 번호
    let comment = {
       cm_content : $('.textarea-comment').val(),
       cm_bo_num : '${board.bo_num}'
    }
+   
+   //내용이 비어있으면 내용을 입력하라고 알려줌
+   if(comment.cm_content.length == 0){
+	   alert('댓글 내용을 작성하세요.');
+	   return;
+   }
+   
    //서버에 데이터를 전송
    $.ajax({
       async : true, //비동기 : true(비동기), false(동기)
@@ -188,6 +205,17 @@ $(".btn-comment-insert").click(function(){
       }
    });
 });
+function checkLogin() {
+	//로그인 했을 때
+	if('${user.me_id}' != ''){
+			return true;
+	}	
+	//안했을 때
+	if(confirm("로그인이 필요한 기능입니다. \n로그인 페이지로 이동하겠습니까?")){
+		location.href = '<c:url value="/login"/>';
+	}
+	return false;
+}
 </script>
 </body>
 </html>
