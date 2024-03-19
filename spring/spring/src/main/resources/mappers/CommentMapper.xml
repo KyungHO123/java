@@ -4,16 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.spring.dao.CommentDAO">
 	<select id="selectCommentList" resultType="CommentVO">
-		select * from comment where cm_bo_num = #{cri.search}
+		select * from comment
+		where cm_bo_num = #{cri.search}
 		order by cm_num desc
-		limit #{cri.pageStart}, #{cri.perPageNum}
+		limit
+		#{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectTotalCount" resultType="int">
-		select count(*) from comment where cm_bo_num = #{cri.search}
+		select count(*) from
+		comment where cm_bo_num = #{cri.search}
 	</select>
-	
+
 	<insert id="insertComment">
-		insert into comment(cm_bo_num,cm_me_id,cm_content)		
+		insert into comment(cm_bo_num,cm_me_id,cm_content)
 		values(#{co.cm_bo_num},#{co.cm_me_id},#{co.cm_content})
 	</insert>
+
+	<select id="selectComment" resultType="CommentVO">
+		select * from comment
+		where cm_num = #{cm_num}
+	</select>
+
+	<delete id="deleteComment">
+		delete from comment where cm_num = #{cm_num}
+	</delete>
 </mapper>

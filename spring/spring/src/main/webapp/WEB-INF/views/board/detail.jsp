@@ -118,12 +118,22 @@ function displayCommentList(list){
       $('.box-comment-list').html(str);
       return;
    }
+   
+   
    for(item of list){
+   let boxBtns = 
+	   ` <span class="box-btn float-right">
+			<button class="btn btn-outline-danger btn-comment-del" data-num="\${item.cm_num}">삭제<button>
+	   </span>`;
+	let  btns= '${user.me_id}' == item.cm_me_id ? boxBtns : '';
       str += 
       `
          <div class="box-comment row">
             <div class="col-3">\${item.cm_me_id}</div>
-            <div class="col-9">\${item.cm_content}</div>
+            <div class="col-9 clearfix">
+            	<span>\${item.cm_content}</span>
+            	\${btns}
+            </div>
          </div>
       `
    }
@@ -162,48 +172,44 @@ $(document).on('click','.box-pagination .page-link',function(){
 	<script type="text/javascript">
 //댓글 등록 버튼의 클릭 이벤트를 등록
 $(".btn-comment-insert").click(function(){
-	//로그인 확인
 	if(!checkLogin()){
 		return;
 	}
-	//
-	let cm_content = 
-   //서버에 보낼 데이터를 생성 => 댓글 등록을 위한 정보 => 댓글 내용, 게시글 번호
-   let comment = {
-      cm_content : $('.textarea-comment').val(),
-      cm_bo_num : '${board.bo_num}'
-   }
-   
-   //내용이 비어있으면 내용을 입력하라고 알려줌
-   if(comment.cm_content.length == 0){
-	   alert('댓글 내용을 작성하세요.');
-	   return;
-   }
-   
-   //서버에 데이터를 전송
-   $.ajax({
-      async : true, //비동기 : true(비동기), false(동기)
-      url : '<c:url value="/comment/insert"/>', 
-      type : 'post',
-      data : JSON.stringify(comment), 
-      contentType : "application/json; charset=utf-8",
-      dataType : "json", 
-      success : function (data){
-    	  if(data.result){
-    		  alert('댓글을 등록했습니다.');
-    		  $('.textarea-comment').val();
-    		  cri.page = 1;
-    		  getCommentList(cri);
-    	  }else{
-    		  alere('댓글 등록을 실패했습니다.');
-    		  
-    	  }
-      }, 
-      error : function(xhr, textStatus, errorThrown){
-         console.log(xhr);
-         console.log(textStatus);
-      }
-   });
+
+	let cm_content = $('.textarea-comment').val(); // 댓글 내용 가져오기
+
+	let comment = {
+		cm_content: cm_content,
+		cm_bo_num: '${board.bo_num}'
+	}
+
+	if(comment.cm_content.length == 0){
+		alert('댓글 내용을 작성하세요.');
+		return;
+	}
+
+	$.ajax({
+		async: true,
+		url: '<c:url value="/comment/insert"/>',
+		type: 'post',
+		data: JSON.stringify(comment),
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: function (data){
+			if(data.result){
+				alert('댓글을 등록했습니다.');
+				$('.textarea-comment').val(''); // textarea 비우기
+				cri.page = 1;
+				getCommentList(cri);
+			}else{
+				alert('댓글 등록을 실패했습니다.');
+			}
+		},
+		error: function(xhr, textStatus, errorThrown){
+			console.log(xhr);
+			console.log(textStatus);
+		}
+	});
 });
 function checkLogin() {
 	//로그인 했을 때
@@ -217,5 +223,39 @@ function checkLogin() {
 	return false;
 }
 </script>
+
+
+<!-- 댓글 삭제 -->
+<script type="text/javascript">
+$(document).on('click','.btn-comment-del',function(){
+	//서버로 보낼 데이터 생성
+	let comment = {
+		cm_num : $(this).data('num')	
+	}
+	console.log(comment)
+	//서버로 데이터를 전송
+	$.ajax({
+		async : true, //비동기 : true(비동기), false(동기)
+		url : '<c:url value="/comment/delete"/>', 
+		type : 'post', 
+		data : JSON.stringify(comment), 
+		contentType : "application/json; charset=utf-8",
+		dataType : "json", 
+		success : function (data){
+			console.log(data);
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	});// ajax end;
+	
+});//document end;
+
+
+</script>
+
+
+
+
 </body>
 </html>
