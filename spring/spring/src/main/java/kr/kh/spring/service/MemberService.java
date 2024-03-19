@@ -5,8 +5,7 @@ import kr.kh.spring.model.vo.MemberVO;
 
 public interface MemberService {
 
- 
-	boolean insertMemner(MemberVO member);
+	boolean insertMember(MemberVO member);
 
 	MemberVO login(LoginDTO loginDto);
 

@@ -15,7 +15,7 @@ public interface BoardDAO {
 
 	int selectBoardTotalCount(@Param("cri")Criteria cri);
 
-	ArrayList<CommunityVO> selectCommunity();
+	ArrayList<CommunityVO> selectCommunityList();
 
 	boolean insertBoard(@Param("bo")BoardVO board);
 
@@ -26,5 +26,13 @@ public interface BoardDAO {
 	void updateView(@Param("bo_num")int boNum);
 
 	ArrayList<FileVO> selectFileList(@Param("bo_num")int boNum);
+
+	void deleteFile(@Param("fi_num")int fi_num);
+
+	boolean deleteBoard(@Param("bo_num")int num);
+
+	boolean updateBoard(@Param("bo")BoardVO board);
+
+	FileVO selectFile(@Param("fi_num")int tmp);
 
 }

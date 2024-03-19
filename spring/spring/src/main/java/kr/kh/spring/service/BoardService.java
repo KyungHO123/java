@@ -20,10 +20,14 @@ public interface BoardService {
 
 	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] file);
 
-	BoardVO getBoardList(int boNum);
+	BoardVO getBoard(int boNum);
 
 	void updateView(int boNum);
 
 	ArrayList<FileVO> getFileList(int boNum);
+
+	boolean deleteBoard(int num, MemberVO user);
+
+	boolean updateBoard(BoardVO board, MemberVO user, MultipartFile[] file, int[] delNums);
 
 }
