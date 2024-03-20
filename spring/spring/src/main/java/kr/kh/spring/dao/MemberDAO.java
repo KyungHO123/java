@@ -14,4 +14,6 @@ public interface MemberDAO {
 
 	public void updatePassword(@Param("id")String id,@Param("pw") String encPw);
 
+	public boolean updateMember(@Param("me")MemberVO member);
+
 }
