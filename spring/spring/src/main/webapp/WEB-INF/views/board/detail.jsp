@@ -23,8 +23,8 @@
 			<div class="form-control">${board.bo_view}</div>
 		</div>
 		<div class="input-group mb-3 mt-3">
-			<button class="btn btn-outline-success btn-up col-6" data-state="1">추천(${board.bo_up})</button>
-			<button class="btn btn-outline-success btn-down col-6" data-state="-1">비추천(${board.bo_down})</button>
+			<button class="btn btn-outline-success btn-up col-6" data-state="1">추천(<span class="text-up">${board.bo_up}</span>)</button>
+			<button class="btn btn-outline-success btn-down col-6" data-state="-1">비추천(<span class="text-down">${board.bo_down}</span>)</button>
 		</div>
 		<div>
 			<label>내용</label>
@@ -315,12 +315,19 @@ function initComment(){
 <!-- 추천 / 비추천 -->
 <script type="text/javascript">
 $(".btn-up,.btn-down").click(function() {
+	//로그인 여부를 체크
+	if(!checkLogin()){
+		return;
+	}
+	
+	//서버에 보낼 데이터 생성
 	let state = $(this).data('state');
 	let boNum = '${board.bo_num}';
 	let recommend = {
 		re_state : state,
 		re_bo_num : boNum
 	}
+	// 서버에 전송 json => json
 	$.ajax({
 		async : true, //비동기 : true(비동기), false(동기)
 		url : '<c:url value="/recommend/check"/>', 
@@ -329,15 +336,70 @@ $(".btn-up,.btn-down").click(function() {
 		contentType : "application/json;charset=utf-8",
 		dataType : "json", 
 		success : function (data){
-			console.log(data);
+			switch (data.result) {
+			case 1:
+				alert('추천 했습니다.');
+				break;
+			case 0:
+				let str = recommend.re_state == 1 ? '추천':'비추천';
+				alert(`\${strd}을 취소했습니다.`)
+				break;
+			case -1:
+				alert('비추천 했습니다.');
+				break;
+			default:
+				alert('추천/비추천을 취소 했습니다.');
+				break;
+			}
 
 		}, 
 		error : function(jqXHR, textStatus, errorThrown){
 
 		}
-	});
-})
+	}); // ajax end;
+});
+//로그인한 회원의 추천/비추천 여부와 게시글의 추천/비추천 수를 가져오는 함수
+function getRecommend() {
+	//서버로 보낼 데이터를 생성 => 게시글 번호
+	let num = '${board.bo_num}'
+	let obj = {
+			num : num
+	}
+	
+	$.ajax({
+		async : true, //비동기 : true(비동기), false(동기)
+		url : '<c:url value="/recommend"/>', 
+		type : 'post', 
+		data : obj, 
+		dataType : "json", 
+		success : function (data){
+			displayUpdateRecommend(data.board);
+			displayRecommend(data.state);
 
+		}, 
+		error : function(jqXHR, textStatus, errorThrown){
+
+		}
+	}); // ajax end;
+	
+}
+function displayUpdateRecommend(board) {
+	$(".text-up").text(board.bo_up);
+	$(".text-down").text(board.bo_down);
+}
+function displayRecommend() {
+	$('.btn-up,.btn-down').addClass("btn-outline-success");	
+	$('.btn-up,.btn-down').removeClass("btn-success");	
+	if(state == 1){
+		$('.btn-up').removeClass("btn-outline-success");	
+		$('.btn-up').addClass("btn-success");	
+	}else if(state == -1){
+		$('.btn-down').removeClass("btn-outline-success");	
+		$('.btn-down').addClass("btn-success");	
+	}
+	
+	
+}
 </script>
 
 </body>
