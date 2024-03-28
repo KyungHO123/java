@@ -25,10 +25,10 @@
 	<update id="updateMember">
 		update member
 		set
-		me_pw = #{me.me_pw},
-		me_email= #{me.me_email}
+			me_pw = #{me.me_pw},
+			me_email= #{me.me_email}
 		where
-		me_id = #{me.me_id}
+			me_id = #{me.me_id}
 	</update>
 
 	<update id="updateMemberCookie">

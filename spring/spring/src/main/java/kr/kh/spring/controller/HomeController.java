@@ -115,6 +115,7 @@ public class HomeController {
 		map.put("result", res);
 		return map;
 	}
+	
 	@GetMapping("/mypage")
 	public String mypage() {
 		
