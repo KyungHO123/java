@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+   <style>
+      input,
+      textarea {
+         display: block;
+      }
+   </style>
+</head>
+
+<body>
+
+   <div id="root"></div>
+   <script type="text/babel">
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      /*
+      1. 게시글 등록을 위한 제목, 내용, 작성자, 작성일을 입력할 수 있는 화면을 구성
+      2. 게시글 등록 버튼을 추가
+      3. 추가된 게시글의 table태그로 게시글 등록 아래에 출력되도록 구성
+         - state를 이용하여 제목, 작성자, 작성일, 내용이 각각 변경될때마다 변경된 내용을 state에
+           저장하도록 구성(확인용으로 console.log로 출력)
+         - 게시글 등록 버튼을 클릭하면, 제목, 작성자, 작성일, 내용을 가져와서 객체를 생성한 후,
+           콘솔에 출력
+      */
+
+      function App() {
+         let [title, setTitle] = React.useState("");
+         let [writer, setWriter] = React.useState("");
+         let [regDate, setRegDate] = React.useState("");
+         let [content, setContent] = React.useState("");
+         let [list, setList] = React.useState([]);
+
+         function insertBoard() {
+            let board = {
+               title,
+               writer,
+               regDate,
+               content
+            }
+
+            setList([board, ...list]);
+         }
+         function deleteBoard(index) {
+            let tmpList = [...list];
+            tmpList.splice(index,1);
+            setList(tmpList);
+         }
+
+         return (
+            <div>
+               <div>
+                  <label htmlFor="">제목</label>
+                  <input type="text" placeholder="제목"
+                     onChange={(e) => setTitle(e.target.value)} />
+                  <label htmlFor="">작성자</label>
+                  <input type="text" placeholder="작성자"
+                     onChange={(e) => setWriter(e.target.value)} />
+                  <label htmlFor="">작성일</label>
+                  <input type="date" placeholder="작성일"
+                     onChange={(e) => setRegDate(e.target.value)} />
+                  <label htmlFor="">내용</label>
+                  <textarea placeholder="내용"
+                     onChange={(e) => setContent(e.target.value)}></textarea>
+               </div>
+               <button onClick={insertBoard}>등록</button>
+               <div>
+                  <table>
+                     <thead>
+                        <tr>
+                           <th>제목</th>
+                           <th>작성자</th>
+                           <th>작성일</th>
+                           <th>비고</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {list.map((item, index) => {
+                           return (
+                              <tr key={index}>
+                                 <td>{item.title}</td>
+                                 <td>{item.writer}</td>
+                                 <td>{item.regDate}</td>
+                                 <td>
+                                    <button onClick={()=>deleteBoard(index)}>삭제</button>
+                                 </td>
+                              </tr>
+                           );
+                        })}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         );
+      };
+
+      root.render(<App />)
+   </script>
+</body>
+
+</html>
