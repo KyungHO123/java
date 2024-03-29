@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+	<script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+	<script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+	<style>
+		.menu-list {
+			display: flex;
+			list-style: none;
+		}
+
+		.menu-list>li {
+			padding-left: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='root'></div>
+	<script type='text/babel'>
+		const Link = ReactRouterDOM.Link,
+			Route = ReactRouterDOM.Route,
+			HashRouter = ReactRouterDOM.HashRouter;
+
+		function Home() {
+			return (
+				<h1>Home</h1>
+			);
+		}
+		function List({ list }) {
+			return (
+				<table>
+					<thead>
+						<tr>
+							<th>제목</th>
+							<th>내용</th>
+							<th>작성자</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							list.map(item => {
+								return (
+									<tr>
+										<td>{item.title}</td>
+										<td>{item.content}</td>
+										<td>{item.writer}</td>
+									</tr>
+								);
+							})
+						}
+					</tbody>
+				</table>);
+		}
+		function Insert() {
+			return (
+				<div>
+					<input type="text" placeholder="제목" />
+					<br />
+					<input type="text" placeholder="작성자" />
+					<br />
+					<textarea name="" id="" cols="30" rows="10" placeholder="내용"></textarea>
+					<br />
+					<button>게시글 등록</button>
+				</div>
+
+			);
+		}
+		</script>
+</body >
+
+</html >
