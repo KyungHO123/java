@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mysql.cj.Session;
-
 import kr.kh.spring.model.vo.BoardVO;
 import kr.kh.spring.model.vo.CommunityVO;
 import kr.kh.spring.model.vo.FileVO;
@@ -145,24 +143,27 @@ public class BoardController {
 		map.put("result", res);
 		return map;
 	}
+
 	@ResponseBody
 	@PostMapping("/recommend/")
-	public Map<String, Object> recommend(@RequestParam("num") int num,
-			HttpSession session) {
+	public Map<String, Object> recommend(@RequestParam("num") int num, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		//로그인한 회원의 추천 정보
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		int state = boardService.getUserRecommend(num,user);
-		//게시글의 추천/비추천수를 가져옴
+		// 로그인한 회원의 추천 정보
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		int state = boardService.getUserRecommend(num, user);
+		// 게시글의 추천/비추천수를 가져옴
 		BoardVO board = boardService.getBoard(num);
-		
+
+		return map;
+	}
+
+	@ResponseBody
+	@GetMapping("/api/board/list")
+	public Map<String, Object> apiBoardList() {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		ArrayList<BoardVO> list = boardService.getBoardList(new Criteria());
+		map.put("list", list);
 		return map;
 	}
 
 }
-
-
-
-
-
-
