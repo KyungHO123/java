@@ -47,3 +47,19 @@ ALTER TABLE `MEMBER` CHANGE `DATE` `REG_DATE` DATETIME NOT NULL;
 ALTER TABLE `MEMBER` ADD `COUNT` INT NOT NULL;
 # MEMBER TABLE에서 COUNT 컬럼을 삭제
 ALTER TABLE `MEMBER` DROP `COUNT`;
+
+
+		SELECT * FROM category where ca_num = category.ca_num and ca_title = category.ca_title;
+        
+        select * from 
+			comment 
+		join 
+			post 
+		on 
+			po_num = co_po_num 
+		join
+			board 
+		on 
+			bo_num = po_bo_num 
+		where 
+			co_num=co_num

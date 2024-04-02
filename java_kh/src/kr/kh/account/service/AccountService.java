@@ -1,11 +1,11 @@
 package kr.kh.account.service;
 
 import java.util.List;
-import java.util.Locale.Category;
 
-import com.mysql.cj.conf.ConnectionUrl.Type;
+import kr.kh.account.model.vo.Category;
+import kr.kh.account.model.vo.Item;
+import kr.kh.account.model.vo.Type;
 
-import accountbook.Item;
 
 public interface AccountService {
 	List<Type> getTypeList();

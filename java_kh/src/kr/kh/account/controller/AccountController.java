@@ -2,9 +2,9 @@ package kr.kh.account.controller;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.Locale.Category;
 import java.util.Scanner;
 
+import kr.kh.account.model.vo.Category;
 import kr.kh.account.model.vo.Item;
 import kr.kh.account.model.vo.Type;
 import kr.kh.account.service.AccountService;

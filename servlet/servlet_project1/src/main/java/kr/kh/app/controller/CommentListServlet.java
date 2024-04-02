@@ -55,7 +55,6 @@ public class CommentListServlet extends HttpServlet {
 		jobj.put("pmStr", pmStr);
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jobj);
-
 	}
 
 }

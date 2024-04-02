@@ -1,6 +1,7 @@
 package kr.kh.account.service;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.util.List;
 
@@ -87,18 +88,6 @@ public class AccountServiceImp implements AccountService {
 		return accountDao.deleteItem(it_num);
 	}
 
-	@Override
-	public boolean insertItem(accountbook.Item item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean updateItem(accountbook.Item item) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	 
 
 	}
-}

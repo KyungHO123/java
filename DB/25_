@@ -1,7 +1,7 @@
 USE COMMUNITY;
-select * from community.file;
+
 # 회원 상태를 추가하는 쿼리(이용 중, 기간 정지, 영구 정지, 탈퇴)
-INSERT INTO MEMBER_STATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
+INSERT INTO MEMBERSTATE VALUES('이용중'), ('기간정지'), ('영구정지'), ('탈퇴');
 
 # 3명이 각각 회원 가입을 진행할 때 필요한 쿼리 
 # 아이디 : abc123, 비번 : abc123, 이메일 : abc123@kh.co.kr, 권한 : USER
