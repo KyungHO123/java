@@ -5,7 +5,7 @@
 <mapper namespace="kr.kh.spring3.dao.MemberDAO">
 
 	<select id="selectMemberCount"
-		resultType="kr.kh.spring3.dao.MemberDAO">
+		resultType="int">
 		select count(*) from member
 	</select>
 </mapper>
