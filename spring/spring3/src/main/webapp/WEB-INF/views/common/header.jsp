@@ -10,14 +10,14 @@
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 		<!-- Brand/logo -->
-		<a class="navbar-brand" href="#"> <img
+		<a class="navbar-brand" href="<c:url value='/' />"> <img
 			src="<c:url value='/resources/img/maple.jpg'  />" alt="logo" style="width: 140px;">
 		</a>
 
 		<!-- Links -->
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+			<li class="nav-item"><a class="nav-link" href="<c:url value='/signup'/>">회원가입</a></li>
+			<li class="nav-item"><a class="nav-link" href="<c:url value='/login'/>">로그인</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>
 		</ul>
 	</nav>

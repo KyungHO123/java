@@ -7,7 +7,9 @@
 <title>Home</title>
 </head>
 <body>
-	<h1>Hello world!</h1>
-
+	<script type="text/javascript">
+		alert('${msg}')
+		location.href = '<c:url  value="/signup"/>${url}'
+	</script>
 </body>
 </html>

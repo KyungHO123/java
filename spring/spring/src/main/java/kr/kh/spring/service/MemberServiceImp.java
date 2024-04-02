@@ -80,8 +80,13 @@ public class MemberServiceImp implements MemberService {
 		}
 		// 아이디 중복 체크
 		MemberVO user = memberDao.selectMember(member.getMe_id());
-		if (user != null) {
-			return false;
+		try {
+			
+			if (user != null) {
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println("중복");
 		}
 		// 비밀번호 암호화
 		String encPw = passwordEncoder.encode(member.getMe_pw());
@@ -161,45 +166,45 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public boolean updateMember(MemberVO member, MemberVO user) {
-	    if(member == null || user == null) {
-	         return false;
-	      }
-	      if(!checkString(member.getMe_email())) {
-	         return false;
-	      }
-	      //비번을 안 바꾸는 경우 : 기존 비밀번호를 이용
-	      if(!checkString(member.getMe_pw())) {
-	         member.setMe_pw(user.getMe_pw());
-	      }else {
-	         String encPw = passwordEncoder.encode(member.getMe_pw());
-	         //비번 암호화
-	         member.setMe_pw(encPw);
-	         //새로운 비번 넣어줌
-	      }
-	      //로그인한 회원 아이디로 아이디를 설정
-	      member.setMe_id(user.getMe_id());
-	      boolean res = memberDao.updateMember(member);
-	      if(!res) {
-	         return false;
-	      }
-	      //세션에 회원 정보를 업데이트하기 위해 작업
-	      user.setMe_pw(member.getMe_pw());
-	      user.setMe_email(member.getMe_email());
-	      return true;
-	   }
+		if (member == null || user == null) {
+			return false;
+		}
+		if (!checkString(member.getMe_email())) {
+			return false;
+		}
+		// 비번을 안 바꾸는 경우 : 기존 비밀번호를 이용
+		if (!checkString(member.getMe_pw())) {
+			member.setMe_pw(user.getMe_pw());
+		} else {
+			String encPw = passwordEncoder.encode(member.getMe_pw());
+			// 비번 암호화
+			member.setMe_pw(encPw);
+			// 새로운 비번 넣어줌
+		}
+		// 로그인한 회원 아이디로 아이디를 설정
+		member.setMe_id(user.getMe_id());
+		boolean res = memberDao.updateMember(member);
+		if (!res) {
+			return false;
+		}
+		// 세션에 회원 정보를 업데이트하기 위해 작업
+		user.setMe_pw(member.getMe_pw());
+		user.setMe_email(member.getMe_email());
+		return true;
+	}
 
 	@Override
 	public void updateMemberCookie(MemberVO user) {
-		if(user == null) {
+		if (user == null) {
 			return;
-		}memberDao.updateMemberCookie(user);
-		
+		}
+		memberDao.updateMemberCookie(user);
+
 	}
 
 	@Override
 	public MemberVO getMemberByCookie(String sessionId) {
 		return memberDao.selectMemberByCookie(sessionId);
 	}
-
 
 }

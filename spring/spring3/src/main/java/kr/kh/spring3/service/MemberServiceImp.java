@@ -1,8 +1,11 @@
 package kr.kh.spring3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import kr.kh.spring3.dao.MemberDAO;
+import kr.kh.spring3.model.vo.MemberVO;
 
 @Service
 public class MemberServiceImp implements MemberService {
@@ -10,10 +13,38 @@ public class MemberServiceImp implements MemberService {
 	@Autowired
 	private MemberDAO memberDao;
 
-	@Override
-	public int getMemberCount() {
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
+	@Override // 전체 회원 수
+	public int getMemberCount() {
 		return memberDao.selectMemberCount();
 	}
 
+	@Override // 회원가입
+	public boolean signup(MemberVO member) {
+
+		if (member == null)
+			return false;
+		// 아이디 중복 확인
+		// 아이디와 일치하는 회원 정보 요청
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		// 이미 가입된 아이디
+		if (user != null)
+			return false;
+		// 빈 문자열도 암호화를 적용하면 빈문자열이 아니기 때문에 가입이 될 수 있어서 처리
+		if (member.getMe_pw() == null || member.getMe_pw().length() == 0)
+			return false;
+		// 비번 암호화
+		String encPw = passwordEncoder.encode(member.getMe_pw());
+		// 암호화된 비번을 member객체에 업데이트
+		member.setMe_pw(encPw);
+		try {
+			return memberDao.insertMember(member);
+		} catch (Exception e) {
+			// 이메일이 없으면 예외 발생
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
