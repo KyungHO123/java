@@ -14,8 +14,20 @@
 		values(#{member.me_id},#{member.me_pw},#{member.me_email},"이용중","user")
 	</insert>
 
-	<select id="selectMember"  resultType="kr.kh.spring3.model.vo.MemberVO">
+	<select id="selectMember"
+		resultType="kr.kh.spring3.model.vo.MemberVO">
 		select * from member where
 		me_id = #{me_id}
+	</select>
+	<select id="login" resultType="kr.kh.spring3.model.vo.MemberVO">
+		select * from member where me_id =
+		#{member.me_id} and me_pw = #{member.me_pw}
+	</select>
+
+	<select id="selectMemberList"
+		resultType="kr.kh.spring3.model.vo.MemberVO">
+		select * from member where me_id =
+		#{me.me_id} and me_pw =
+		#{me.me_pw}
 	</select>
 </mapper>

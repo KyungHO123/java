@@ -23,7 +23,6 @@ public class MemberServiceImp implements MemberService {
 
 	@Override // 회원가입
 	public boolean signup(MemberVO member) {
-
 		if (member == null)
 			return false;
 		// 아이디 중복 확인
@@ -46,5 +45,22 @@ public class MemberServiceImp implements MemberService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override // 로그인
+	public MemberVO login(MemberVO member) {
+		// 매개변수 null 처리
+		if (member == null || member.getMe_id() == null || member.getMe_pw() == null)
+			return null;
+
+		// 아이디 확인
+		MemberVO user = memberDao.selectMember(member.getMe_id());
+		if (user == null) {
+			return null;
+		}
+		if (passwordEncoder.matches(member.getMe_pw(), user.getMe_pw())) {
+			return user;
+		}
+		return null;
 	}
 }

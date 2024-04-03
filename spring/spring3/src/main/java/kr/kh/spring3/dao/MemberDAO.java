@@ -12,4 +12,8 @@ public interface MemberDAO {
 
 	MemberVO selectMember(@Param("me_id")String me_id);
 
+	MemberVO login(@Param("member")MemberVO member);
+
+	MemberVO selectMemberList(@Param("me")MemberVO member);
+
 }

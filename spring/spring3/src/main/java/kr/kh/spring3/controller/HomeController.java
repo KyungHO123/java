@@ -2,6 +2,8 @@ package kr.kh.spring3.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class HomeController {
 	// 겟 싸인업
 	@GetMapping("/signup")
 	public String getSignup(Model model) {
-		model.addAttribute("title","회원가입");
+		model.addAttribute("title", "회원가입");
 		return "/member/signup";
 	}
 
@@ -46,18 +48,44 @@ public class HomeController {
 			model.addAttribute("url", "/");
 		} else {
 			model.addAttribute("msg", "회원가입을 하지 못했습니다.");
-			model.addAttribute("url", "/member/signup");
+			model.addAttribute("url", "/signup");
 		}
 		return "message";
 
 	}
-	
+
 	// 겟 로그인
 	@GetMapping("/login")
-	public String getLogin(Model model,MemberVO member) {
-		model.addAttribute("title","로그인");
-		return "/login";
-		
+	public String getLogin(Model model, MemberVO member) {
+		model.addAttribute("title", "로그인");
+
+		return "/member/login";
+
 	}
+
+	// 포스트 로그인
+	@PostMapping("/login")
+	public String postLogin(Model model, MemberVO member) {
+		MemberVO user = memberService.login(member);
+		model.addAttribute("user", user); // user라는 이름으로 전송
+		if (user != null) {
+			model.addAttribute("msg", "로그인 했습니다.");
+			model.addAttribute("url", "/");
+		} else {
+			model.addAttribute("msg", "로그인을 하지 못했습니다.");
+			model.addAttribute("url", "/login");
+		}
+		return "message";
+
+	}
+	// 겟 로그아웃
+		@GetMapping("/logout")
+		public String getLogout(Model model, HttpSession session) {
+			session.removeAttribute("user");
+			model.addAttribute("msg", "로그아웃 했습니다.");
+			model.addAttribute("url", "/");
+			return "message";
+
+		}
 
 }

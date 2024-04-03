@@ -13,25 +13,25 @@
 		<form action="<c:url value='/signup'/>" method="post">
 			<div class="form-group">
 				<label>아이디</label>
-				<input class="form-group" type="text" id="id" name="me_id"
+				<input class="form-control" type="text" id="id" name="me_id"
 					placeholder="아이디" required>
 			</div>
 			<div class="form-group">
 				<label>비밀번호</label>
-				<input class="form-group" type="password" id="pw" name="me_pw"
+				<input class="form-control" type="password" id="pw" name="me_pw"
 					placeholder="비밀번호" required>
 			</div>
 			<div class="form-group">
 				<label>비밀번호 확인</label>
-				<input class="form-group" type="password" id="pw2 " name="pw2"
+				<input class="form-control" type="password" id="pw2 " name="pw2"
 					placeholder="비밀번호 확인">
 			</div>
 			<div class="form-group">
 				<label>이메일</label>
-				<input class="form-group" type="text" id="email" name="me_email"
+				<input class="form-control" type="text" id="email" name="me_email"
 					placeholder="이메일" required>
 			</div>
-			<button type="submit" class="btn btn-secondary">회원가입</button>
+			<button type="submit" class="btn btn-outline-success">회원가입</button>
 		</form>
 	</div>
 
