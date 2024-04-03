@@ -26,7 +26,7 @@
 					 		오토 인크리먼트로 인해 
 					 		중간에 숫자가 빠지는 현상이 사라짐
 					 		 -->
-						<td>${list.size() - vs.index}</td>
+						<td>${pm.totalCount - vs.index - pm.cri.pageStart}</td>
 						<td><a href="#">${post.bo_title }</a></td>
 						<td>${post.bo_me_id }</td>
 						<td>${post.bo_view }</td>
@@ -42,20 +42,20 @@
 					 	</c:url>
 						<a class="page-link" href="${url}">이전</a></li>
 				 <c:forEach begin="${pm.startPage }" end="${pm.endPage }" var="i">
-				 		<c:set var="active" value="${pm.cri.page == i ?'active':'' }" />
-			 		 	<c:url var="url" value="/post/list">
-					 			<c:param name="page" value="${i }"/>
-				 		</c:url>
-								<li class="page-item">
-										<a class="page-link" href="${url }">${i}</a>
-								</li>
+				 			<c:set var="active" value="${pm.cri.page == i ?'active':'' }" />
+		 					<li class="page-item" ${active }>
+					 		 		<c:url var="url" value="/post/list">
+							 				<c:param name="page" value="${i }"/>
+						 			</c:url>
+									<a class="page-link" href="${url }">${i}</a>
+							</li>
 				 </c:forEach>
-				 	<c:url var="url" value="/post/list">
+				 		<c:url var="url" value="/post/list">
 					 			<c:param name="page" value="${pm.endPage + 1 }"/>
-				 	</c:url>
-							 <li class="page-item">
-							 		<a class="page-link" href="${url}">다음</a>
-				 			 </li>
+				 		</c:url>
+						 <li class="page-item">
+						 		<a class="page-link" href="${url}">다음</a>
+			 			 </li>
 		</ul>
 	</div>
 
