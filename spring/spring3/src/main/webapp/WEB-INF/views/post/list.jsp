@@ -50,6 +50,7 @@
 			</tbody>
 		</table>
 
+
 		<ul class="pagination">
 				<c:if test="${pm.prev}">
 					 <li class="page-item">
@@ -85,11 +86,11 @@
 					 			 </li>
 			 			 </c:if>
 			</ul>
+					<a href="<c:url value="/post/insert"/>" class="btn btn-outline-success">글쓰기</a>
 	</div>
 	<script type="text/javascript">
 	$("[name=order]").change(function () {
 		$("#searchForm").submit();
-		
 	})
 	</script>
 
