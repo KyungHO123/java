@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<h1>게시글 목록</h1>
-		<form action="<c:url value="/post/list"/>" method="get">
+		<form action="<c:url value="/post/list"/>" method="get" id="searchForm">
 				<div class="input-group-prepend">
 						<select name="type" class="form-control" style="width: 25%">
 								<option  value="all" <c:if test="${pm.cri.type=='all' }">selected</c:if>>전체</option>
@@ -86,6 +86,12 @@
 			 			 </c:if>
 			</ul>
 	</div>
+	<script type="text/javascript">
+	$("[name=order]").change(function () {
+		$("#searchForm").submit();
+		
+	})
+	</script>
 
 </body>
 </html>
