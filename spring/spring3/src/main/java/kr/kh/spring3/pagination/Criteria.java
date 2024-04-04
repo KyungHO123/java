@@ -10,13 +10,13 @@ public class Criteria {
 	private int perPageNum = 10;// 한 페이지에서 컨텐츠 개수 : 기본값 - 10
 
 	private String search = ""; // 검색어 : 기본값 - 빈문자열=> 전체 검색
-	private String type; // 검색 타입
+	private String type = "all"; // 검색 타입
+	private String order = "bo_num";
 
 	public Criteria(int page, int perPageNum) {
 		this.page = page;
 		this.perPageNum = perPageNum;
 	}
-
 	public int getPageStart() {
 		return (page - 1) * perPageNum;
 	}

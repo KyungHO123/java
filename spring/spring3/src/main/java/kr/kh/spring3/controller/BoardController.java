@@ -24,7 +24,7 @@ public class BoardController {
 	@RequestMapping(value = "/post/list", method = RequestMethod.GET)
 	public String postList( Model model,Criteria cri) {
 		ArrayList<BoardVO> list = boardService.selectBoardList(cri);
-		int TotalCount = boardService.getBoardTotalCount();
+		int TotalCount = boardService.getBoardTotalCount(cri); // cri 추가
 		PageMaker pm = new PageMaker(3, cri, TotalCount);
 		model.addAttribute("pm", pm);
 		model.addAttribute("list", list);
