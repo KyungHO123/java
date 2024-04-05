@@ -6,47 +6,57 @@
 
 	<select id="selectBoardList"
 		resultType="kr.kh.spring3.model.vo.BoardVO">
-		select * 
-			from board
-				<if test='cri.type == "all" '>
-					where bo_title like concat('%',#{cri.search},'%')
-						or bo_content like concat('%',#{cri.search},'%')
-						or bo_me_id like concat('%',#{cri.search},'%')
-				</if>
-				<if test='cri.type == "title" '>
-				where bo_title like concat('%',#{cri.search},'%')
-						or bo_content like concat('%',#{cri.search},'%')
-				</if>
-				<if test='cri.type == "writer" '>
-				where bo_me_id like concat('%',#{cri.search},'%')
-				</if>
+		select *
+		from board
+		<if test='cri.type == "all" '>
+			where bo_title like concat('%',#{cri.search},'%')
+			or bo_content like concat('%',#{cri.search},'%')
+			or bo_me_id like concat('%',#{cri.search},'%')
+		</if>
+		<if test='cri.type == "title" '>
+			where bo_title like concat('%',#{cri.search},'%')
+			or bo_content like concat('%',#{cri.search},'%')
+		</if>
+		<if test='cri.type == "writer" '>
+			where bo_me_id like concat('%',#{cri.search},'%')
+		</if>
 		order by
-				${cri.order}
+		${cri.order}
 		desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 
 	<select id="selectBoardTotalCount" resultType="int">
-		select count(*) 
-			from board
-				<if test='cri.type == "all" '>
-					where bo_title like concat('%',#{cri.search},'%')
-						or bo_content like concat('%',#{cri.search},'%')
-						or bo_me_id like concat('%',#{cri.search},'%')
-				</if>
-				<if test='cri.type == "title" '>
+		select count(*)
+		from board
+		<if test='cri.type == "all" '>
 				where bo_title like concat('%',#{cri.search},'%')
-						or bo_content like concat('%',#{cri.search},'%')
-				</if>
-				<if test='cri.type == "writer" '>
+				or bo_content like concat('%',#{cri.search},'%')
+				or bo_me_id like concat('%',#{cri.search},'%')
+		</if>
+		<if test='cri.type == "title" '>
+				where bo_title like concat('%',#{cri.search},'%')
+				or bo_content like concat('%',#{cri.search},'%')
+		</if>
+		<if test='cri.type == "writer" '>
 				where bo_me_id like concat('%',#{cri.search},'%')
-				</if>
+		</if>
+	</select>
+
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+		insert into
+		board(bo_title,bo_content,bo_me_id,bo_co_num)
+		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},#{board.bo_co_num})
+	</insert>
+	
+	<select id="selectCommunity"
+		resultType="kr.kh.spring3.model.vo.CommunityVO">
+			select * from community 
 	</select>
 	
-	<insert id="insertBoard">
-		insert into board(bo_title,bo_content,bo_me_id,bo_co_num)
-		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},1)
+	<insert id="insertFile">
+			insert into file(fi_bo_num,fi_name,fi_ori_name)
+				values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})		
 	</insert>
-
-
+	
 </mapper>
