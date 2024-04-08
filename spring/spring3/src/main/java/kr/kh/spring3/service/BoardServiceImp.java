@@ -1,14 +1,11 @@
 package kr.kh.spring3.service;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
-
 import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import kr.kh.spring3.dao.BoardDAO;
 import kr.kh.spring3.model.vo.BoardVO;
 import kr.kh.spring3.model.vo.CommunityVO;
@@ -83,6 +80,22 @@ public class BoardServiceImp implements BoardService {
 			@Override
 			public ArrayList<CommunityVO> selectCommunity() {
 				return boardDao.selectCommunity();
+			}
+
+			@Override
+			public void updateView(int bo_num) {
+					boardDao.updateView(bo_num);
+			}
+
+			@Override
+			public BoardVO getBoard(int bo_num) {
+				return boardDao.selectBoard(bo_num);
+			}
+
+			@Override
+			public ArrayList<FileVO> getFileList(int bo_num) {
+				
+				return boardDao.selectFileList(bo_num);
 			}
 
 }

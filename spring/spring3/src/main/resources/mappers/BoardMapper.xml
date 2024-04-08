@@ -10,12 +10,15 @@
 		from board
 		<if test='cri.type == "all" '>
 			where bo_title like concat('%',#{cri.search},'%')
-			or bo_content like concat('%',#{cri.search},'%')
-			or bo_me_id like concat('%',#{cri.search},'%')
+			or
+			bo_content like concat('%',#{cri.search},'%')
+			or bo_me_id like
+			concat('%',#{cri.search},'%')
 		</if>
 		<if test='cri.type == "title" '>
 			where bo_title like concat('%',#{cri.search},'%')
-			or bo_content like concat('%',#{cri.search},'%')
+			or
+			bo_content like concat('%',#{cri.search},'%')
 		</if>
 		<if test='cri.type == "writer" '>
 			where bo_me_id like concat('%',#{cri.search},'%')
@@ -30,33 +33,49 @@
 		select count(*)
 		from board
 		<if test='cri.type == "all" '>
-				where bo_title like concat('%',#{cri.search},'%')
-				or bo_content like concat('%',#{cri.search},'%')
-				or bo_me_id like concat('%',#{cri.search},'%')
+			where bo_title like concat('%',#{cri.search},'%')
+			or bo_content like concat('%',#{cri.search},'%')
+			or bo_me_id like concat('%',#{cri.search},'%')
 		</if>
 		<if test='cri.type == "title" '>
-				where bo_title like concat('%',#{cri.search},'%')
-				or bo_content like concat('%',#{cri.search},'%')
+			where bo_title like concat('%',#{cri.search},'%')
+			or bo_content like concat('%',#{cri.search},'%')
 		</if>
 		<if test='cri.type == "writer" '>
-				where bo_me_id like concat('%',#{cri.search},'%')
+			where bo_me_id like concat('%',#{cri.search},'%')
 		</if>
 	</select>
 
-	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num">
+	<insert id="insertBoard" useGeneratedKeys="true"
+		keyProperty="board.bo_num">
 		insert into
 		board(bo_title,bo_content,bo_me_id,bo_co_num)
 		values(#{board.bo_title},#{board.bo_content},#{board.bo_me_id},#{board.bo_co_num})
 	</insert>
-	
+
 	<select id="selectCommunity"
 		resultType="kr.kh.spring3.model.vo.CommunityVO">
-			select * from community 
+		select * from community
 	</select>
-	
+
 	<insert id="insertFile">
-			insert into file(fi_bo_num,fi_name,fi_ori_name)
-				values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})		
+		insert into file(fi_bo_num,fi_name,fi_ori_name)
+		values(#{file.fi_bo_num},#{file.fi_name},#{file.fi_ori_name})
 	</insert>
+
+	<update id="updateView">
+		update board set bo_view = bo_view +1 where bo_num =
+		#{bo_num}
+	</update>
+
+	<select id="selectBoard"
+		resultType="kr.kh.spring3.model.vo.BoardVO">
+		select * from board where bo_num = #{bo_num}
+	</select>
+
+	<select id="selectFileList"
+		resultType="kr.kh.spring3.model.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
+	</select>
 	
 </mapper>

@@ -42,7 +42,7 @@
 					 		중간에 숫자가 빠지는 현상이 사라짐
 					 		 -->
 						<td>${pm.totalCount - vs.index - pm.cri.pageStart}</td>
-						<td><a href="#">${post.bo_title }</a></td>
+						<td><a href="<c:url value="/post/detail?bo_num=${post.bo_num}"/>">${post.bo_title }</a></td>
 						<td>${post.bo_me_id }</td>
 						<td>${post.bo_view }</td>
 					</tr>
